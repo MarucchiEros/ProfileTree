@@ -141,7 +141,7 @@ p {
 }
 
 .footer {
-    position: fixed;
+    position: relative;
     bottom: 0;
     width: 100%;
     background-color: black;
@@ -160,3 +160,23 @@ p {
     right: 0;
     float: right;
 }
+
+.about{
+    color: black;
+    font-size: large;
+}
+
+  a:hover {
+    color:#28a745;
+    background-color: transparent;
+    text-decoration: underline;
+  }
+
+  ul, li {
+    color: #000;
+    font-size: large;
+  }
+
+  hr {
+    color:#000;
+  }
