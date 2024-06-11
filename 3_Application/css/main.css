@@ -34,10 +34,11 @@ body {
 }
 
 .logo {
-    width: 2%;
+    width: 3%;
     height: auto;
     margin-right: 20px;
-    float: 0;
+    right: 0;
+    float: right;
 }
 
 #bin {
@@ -123,6 +124,11 @@ button {
     }
 }
 
+@media (max-width: 850px) {
+    .logo {
+        display: none;
+    }
+}
 
 h5,
 h4,
@@ -149,34 +155,43 @@ p {
     padding: 10px 0;
     text-align: center;
     font-size: large;
-    line-height: 50px
+    line-height: 50px;
+    margin-top: px;
 }
+
 .footer a {
     color: #28a745;
     text-decoration: none;
 }
 
-.logo {
-    right: 0;
-    float: right;
-}
 
-.about{
+.about {
     color: black;
     font-size: large;
 }
 
-  a:hover {
-    color:#28a745;
-    background-color: transparent;
-    text-decoration: underline;
-  }
+a:link{
+    text-decoration: none;
+}
 
-  ul, li {
+a:hover {
+    color: #28a745;
+    background-color: transparent;
+    text-decoration: none;
+}
+
+ul,
+li {
     color: #000;
     font-size: large;
-  }
+}
 
-  hr {
-    color:#000;
-  }
+hr {
+    color: #000;
+}
+
+h1{
+    -webkit-text-stroke: 3px black; /* per Safari */
+    text-stroke: 1px black; /* standard */
+    margin-bottom: -20px;
+}
