@@ -8,12 +8,12 @@
     <link rel="icon" href="image/profiletree_logo.png" type="image/png">
     <link rel="stylesheet" href="css/bootstrap-5.0.2-dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/main.css">
-    <script src="js/main.js"></script>
-    <script src="css/bootstrap-5.0.2-dist/js/bootstrap.bundle.js"></script>
+    
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
         @import url('https://fonts.googleapis.com/css2?family=Bubblegum+Sans&display=swap');
     </style>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body>
@@ -34,14 +34,14 @@
                         </p>
                     </div>
                     <p>
-                        CO2 emissions are calculated by considering the energy consumed during the loading of a web page. 
-                        This energy is converted into carbon emissions, as electricity is often produced by burning fossil 
+                        CO2 emissions are calculated by considering the energy consumed during the loading of a web page.
+                        This energy is converted into carbon emissions, as electricity is often produced by burning fossil
                         fuels such as coal, oil, or natural gas, which release carbon dioxide into the atmosphere.
                     </p>
                     <p>
-                        The process of calculating carbon emissions is based on the size of the web page, measured in bytes, 
-                        and the energy consumed to load it, measured in kilowatt-hours (kWh). By knowing the amount of energy 
-                        consumed, it is possible to estimate the carbon emissions produced during the loading of the page. 
+                        The process of calculating carbon emissions is based on the size of the web page, measured in bytes,
+                        and the energy consumed to load it, measured in kilowatt-hours (kWh). By knowing the amount of energy
+                        consumed, it is possible to estimate the carbon emissions produced during the loading of the page.
                         The formula for calculating CO2 emissions is as follows:
                     </p>
                     <p>
@@ -56,22 +56,91 @@
                         </ul>
                     </p>
                     <p>
-                        This analysis provides an estimate of the CO2 emissions associated with viewing a web page, helping to 
+                        This analysis provides an estimate of the CO2 emissions associated with viewing a web page, helping to
                         understand the environmental impact of surfing the Internet.
                     </p>
                     <span class="about">go back to </span><a href="index.html" target="_blank" class="footer-link">the calculator</a>
                 </div>
             </div>
+
+            <div class="row justify-content-center mt-5">
+                <div class="col-md-6">
+                    <canvas id="emissionsChart" width="400" height="200"></canvas>
+                </div>
+            </div>
         </div>
     </div>
-    
+
     <div class="footer">
-        <span class="footer-copyright">© Eros Marucchi and Edoardo Antonini</span> - 
+        <span class="footer-copyright">© Eros Marucchi and Edoardo Antonini</span> -
         <a href="https://profiletree.com/" target="_blank" class="footer-link">ProfileTree</a>
         <a href="https://profiletree.com/" target="_blank" class="footer-link">
             <img class="logo" src="image/profiletree_logo.png" alt="Logo ProfileTree">
+            <script src="js/main.js"></script>
+    <script src="css/bootstrap-5.0.2-dist/js/bootstrap.bundle.js"></script>
         </a>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const ctx = document.getElementById('emissionsChart').getContext('2d');
+            const emissionsChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['A', 'B', 'C', 'D', 'E', 'F'],
+                    datasets: [{
+                        label: 'Carbon Emissions Level (grams of CO2)',
+                        data: [0.2, 0.4, 0.6, 0.8, 2.0, 2.1],
+                        backgroundColor: [
+                            'rgba(75, 192, 192, 0.2)', // A
+                            'rgba(75, 192, 192, 0.4)', // B
+                            'rgba(75, 192, 192, 0.6)', // C
+                            'rgba(255, 206, 86, 0.6)', // D
+                            'rgba(255, 99, 132, 0.6)', // E
+                            'rgba(255, 99, 132, 0.8)'  // F
+                        ],
+                        borderColor: [
+                            'rgba(75, 192, 192, 1)',
+                            'rgba(75, 192, 192, 1)',
+                            'rgba(75, 192, 192, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(255, 99, 132, 1)'
+                        ],
+                        borderWidth: 1
+                    }, {
+                        type: 'line',
+                        label: 'Trend',
+                        data: [0, 0.25, 0.4, 0.6, 1.5, 2], 
+                        borderColor: 'rgba(255, 0, 0, 1)',
+                        borderWidth: 2,
+                        fill: false,
+                        pointRadius: 0, // Hide points
+                        xAxisID: 'bar-x-axis'
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: 'Grams of CO2'
+                            }
+                        },
+                        x: {
+                            title: {
+                                display: true,
+                                text: 'Emissions Level'
+                            }
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+    
+    
 </body>
 
 </html>

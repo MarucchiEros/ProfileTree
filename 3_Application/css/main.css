@@ -195,3 +195,15 @@ h1{
     text-stroke: 1px black; /* standard */
     margin-bottom: -20px;
 }
+
+canvas {
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 20px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    padding: 30px;
+    transition: transform 0.3s;
+}
+
+canvas:hover {
+    transform: scale(1.05);
+}
