@@ -1,0 +1,6 @@
+CO2 emissions are calculated by considering the energy consumed during the loading of a web page.
+This consumed energy is converted into carbon emissions, as electricity is often produced by burning fossil fuels such as coal, oil or natural gas,
+which release carbon dioxide into the atmosphere.
+The process of calculating carbon emissions is based on the size of the web page, measured in bytes, and the energy consumed to load it, measured in kilowatt-hours (kWh).
+By knowing the amount of energy consumed, we can estimate the carbon emissions produced during the loading of the page.
+All this is analysed to provide an estimate of the CO2 emissions associated with viewing a web page, helping to understand the environmental impact of surfing the Internet.
