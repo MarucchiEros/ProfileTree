@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Outfit:wght@100..900&display=swap');
-
 body {
     margin: 0;
     height: 100vh;
@@ -10,7 +9,6 @@ body {
     font-weight: 400;
     font-style: normal;
 }
-
 .background {
     position: relative;
     width: 100%;
@@ -21,7 +19,6 @@ body {
     background-repeat: no-repeat;
     background-attachment: fixed;
 }
-
 .overlay {
     position: absolute;
     top: 0;
@@ -30,36 +27,68 @@ body {
     height: 100%;
     background-color: rgba(0, 0, 0, 0.7); 
 }
-
 .content {
     position: relative;
     z-index: 1; 
     color: white;
-    /*text-align: center;*/
+    text-align: center;
     padding: 20px;
 }
-
 p{
     color: rgb(52, 187, 100);
 }
-
-
 .logo {
     width: 10%;
     height: auto;
     margin-right: 20px;
 }
-form{
+#bin{
     background-color: rgba(255, 255, 255, 0.25);
     border-radius: 20px;
     padding: 20px;
 }
-
 input [type="text"] {
     width: 1000px;
 }
-
 button {
     border-radius: 20px;
 }
- 
+#firstResult{
+    display: flex;
+      justify-content: center; /* Centra orizzontalmente */
+      align-items: center;    /* Centra verticalmente */
+}
+.progress {
+    height: 20px;
+    background-color: #a3a3a3;
+    border-radius: 5px;
+    overflow: hidden;
+    margin-top: 10px;
+    position: relative;
+}
+
+.progress-bar {
+    height: 100%;
+    background-color: #28a745;
+    transition: width 2.5s ease-in-out;
+    position: absolute;
+    right: 0;
+    width: 0;
+}
+
+.progress-bar-red {
+    background-color: #dc3545;
+    left: 0;
+    width: 0;
+    transition: width 2.5s ease-in-out;
+}
+
+footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: rgb(2, 114, 21);
+    color: white;
+    text-align: center;
+}
