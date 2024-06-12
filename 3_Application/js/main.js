@@ -55,15 +55,15 @@ async function getPageDetails() {
 }
 
 function getLetterFromEmissions(emissions) {
-    if (emissions >= 2) {
+    if (emissions >= 1.5) {
         return 'F';
-    } else if (emissions >= 0.8) {
+    } else if (emissions >= 1.2) {
         return 'E';
-    } else if (emissions >= 0.6) {
+    } else if (emissions >= 0.9) {
         return 'D';
-    } else if (emissions >= 0.4) {
+    } else if (emissions >= 0.6) {
         return 'C';
-    } else if (emissions >= 0.2) {
+    } else if (emissions >= 0.3) {
         return 'B';
     } else {
         return 'A';

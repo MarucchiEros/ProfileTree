@@ -2,21 +2,23 @@
 <html lang="en">
 
 <head>
+    <script src="https://static.elfsight.com/platform/platform.js" data-use-service-core defer></script>
+
     <title>ProfileTree Carbon Footprint Calculator</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="image/profiletree_logo.png" type="image/png">
     <link rel="stylesheet" href="css/bootstrap-5.0.2-dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/main.css">
-    
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
-        @import url('https://fonts.googleapis.com/css2?family=Bubblegum+Sans&display=swap');
-    </style>
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/import.css">
+    <link rel="stylesheet" href="css/footer.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/2.5.0/remixicon.css">
 </head>
 
 <body>
+    <div class="elfsight-app-30f9ff2c-fd19-4d85-914d-6fdaa119ddf7" data-elfsight-app-lazy></div>
     <div class="background">
         <div class="overlay"></div>
         <div class="content container">
@@ -34,113 +36,125 @@
                         </p>
                     </div>
                     <p>
-                        CO2 emissions are calculated by considering the energy consumed during the loading of a web page.
-                        This energy is converted into carbon emissions, as electricity is often produced by burning fossil
+                        CO2 emissions are calculated by considering the energy consumed during the loading of a web
+                        page.
+                        This energy is converted into carbon emissions, as electricity is often produced by burning
+                        fossil
                         fuels such as coal, oil, or natural gas, which release carbon dioxide into the atmosphere.
                     </p>
                     <p>
-                        The process of calculating carbon emissions is based on the size of the web page, measured in bytes,
-                        and the energy consumed to load it, measured in kilowatt-hours (kWh). By knowing the amount of energy
-                        consumed, it is possible to estimate the carbon emissions produced during the loading of the page.
+                        The process of calculating carbon emissions is based on the size of the web page, measured in
+                        bytes,
+                        and the energy consumed to load it, measured in kilowatt-hours (kWh). By knowing the amount of
+                        energy
+                        consumed, it is possible to estimate the carbon emissions produced during the loading of the
+                        page.
                         The formula for calculating CO2 emissions is as follows:
                     </p>
                     <p>
-                        <strong>CO2 emissions =<br> Page size × Energy per byte in kWh per byte × CO2 emission factor in kg CO2 per kWh</strong>
+                        <strong>CO2 emissions =<br> Page size × Energy per byte in kWh per byte × CO2 emission factor in
+                            kg CO2 per kWh</strong>
                     </p>
                     <p>
                         Where:
-                        <ul>
-                            <li><strong>Page size</strong> is the overall size of the loaded web page, expressed in bytes.</li>
-                            <li><strong>Energy per byte</strong> is the average energy required to transfer one byte of data, expressed in kilowatt-hours per byte (kWh/byte).</li>
-                            <li><strong>CO2 emission factor</strong> represents the amount of CO2 emitted per kilowatt hour of energy consumed, expressed in kilograms of CO2 per kilowatt hour (kg CO2/kWh).</li>
-                        </ul>
+                    <ul>
+                        <li><strong>Page size</strong> is the overall size of the loaded web page, expressed in bytes.
+                        </li>
+                        <li><strong>Energy per byte</strong> is the average energy required to transfer one byte of
+                            data, expressed in kilowatt-hours per byte (kWh/byte).</li>
+                        <li><strong>CO2 emission factor</strong> represents the amount of CO2 emitted per kilowatt hour
+                            of energy consumed, expressed in kilograms of CO2 per kilowatt hour (kg CO2/kWh).</li>
+                    </ul>
                     </p>
                     <p>
-                        This analysis provides an estimate of the CO2 emissions associated with viewing a web page, helping to
+                        This analysis provides an estimate of the CO2 emissions associated with viewing a web page,
+                        helping to
                         understand the environmental impact of surfing the Internet.
                     </p>
-                    <span class="about">go back to </span><a href="index.html" target="_blank" class="footer-link">the calculator</a>
+                    <span class="about">go back to </span><a href="index.html" target="_blank" class="footer-link">the
+                        calculator</a>
                 </div>
             </div>
-
+            <br><br>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Rating</th>
+                        <th>Grams CO2e per pageview</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>A</td>
+                        <td>0 - 0.2</td>
+                    </tr>
+                    <tr>
+                        <td>B</td>
+                        <td>0.2 - 0.4</td>
+                    </tr>
+                    <tr>
+                        <td>C</td>
+                        <td>0.4 - 0.6</td>
+                    </tr>
+                    <tr>
+                        <td>D</td>
+                        <td>0.6 - 0.8</td>
+                    </tr>
+                    <tr>
+                        <td>E</td>
+                        <td>0.8 - 2.0</td>
+                    </tr>
+                    <tr>
+                        <td>F</td>
+                        <td>2.0+</td>
+                    </tr>
+                </tbody>
+            </table>
             <div class="row justify-content-center mt-5">
                 <div class="col-md-6">
-                    <canvas id="emissionsChart" width="400" height="200"></canvas>
+                    <canvas id="emissionsChart" width="400" height="250"></canvas>
                 </div>
             </div>
         </div>
     </div>
+    <div id="navbar" class="navbar">
+        <ul>
+            <p style="text-align: center;">Menu</p>
+            <hr>
+            <li><a href="#section1">Section 1</a></li>
+            <hr>
+            <li><a href="#section2">Section 2</a></li>
+            <hr>
+            <li><a href="#section3">Section 3</a></li>
+            <hr>
+            <li><a href="#section4">Section 4</a></li>
+            <hr>
+            <li><a href="#section5">Section 5</a></li>
+            <hr>
+        </ul>
+    </div>
+    <div id="navbarToggle" class="navbar-toggle" onclick="toggleNavbar()">
+        <i class="ri-menu-line"></i>
+    </div>
+    <script>window.gtranslateSettings = { "default_language": "en", "languages": ["en", "fr", "de", "it", "es"], "wrapper_selector": ".gtranslate_wrapper" }</script>
+    <script src="https://cdn.gtranslate.net/widgets/latest/flags.js" defer></script>
 
     <div class="footer">
         <span class="footer-copyright">© Eros Marucchi and Edoardo Antonini</span> -
-        <a href="https://profiletree.com/" target="_blank" class="footer-link">ProfileTree</a>
-        <a href="https://profiletree.com/" target="_blank" class="footer-link">
-            <img class="logo" src="image/profiletree_logo.png" alt="Logo ProfileTree">
-            <script src="js/main.js"></script>
-    <script src="css/bootstrap-5.0.2-dist/js/bootstrap.bundle.js"></script>
-        </a>
+        <a href="https://profiletree.com/" class="footer-link">ProfileTree</a>
+        <a href="https://profiletree.com/" class="footer-link">
+            <img class="logo" src="image/profiletree_logo.png" alt="Logo ProfileTree"></a>
+        <script src="js/main.js"></script>
+        <script src="js/graphic.js"></script>
+        <script src="css/bootstrap-5.0.2-dist/js/bootstrap.bundle.js"></script>
+        <div class="gtranslate_wrapper"></div>
+        <script src="js/navbar.js"></script>
     </div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const ctx = document.getElementById('emissionsChart').getContext('2d');
-            const emissionsChart = new Chart(ctx, {
-                type: 'bar',
-                data: {
-                    labels: ['A', 'B', 'C', 'D', 'E', 'F'],
-                    datasets: [{
-                        label: 'Carbon Emissions Level (grams of CO2)',
-                        data: [0.2, 0.4, 0.6, 0.8, 2.0, 2.1],
-                        backgroundColor: [
-                            'rgba(75, 192, 192, 0.2)', // A
-                            'rgba(75, 192, 192, 0.4)', // B
-                            'rgba(75, 192, 192, 0.6)', // C
-                            'rgba(255, 206, 86, 0.6)', // D
-                            'rgba(255, 99, 132, 0.6)', // E
-                            'rgba(255, 99, 132, 0.8)'  // F
-                        ],
-                        borderColor: [
-                            'rgba(75, 192, 192, 1)',
-                            'rgba(75, 192, 192, 1)',
-                            'rgba(75, 192, 192, 1)',
-                            'rgba(255, 206, 86, 1)',
-                            'rgba(255, 99, 132, 1)',
-                            'rgba(255, 99, 132, 1)'
-                        ],
-                        borderWidth: 1
-                    }, {
-                        type: 'line',
-                        label: 'Trend',
-                        data: [0, 0.25, 0.4, 0.6, 1.5, 2], 
-                        borderColor: 'rgba(255, 0, 0, 1)',
-                        borderWidth: 2,
-                        fill: false,
-                        pointRadius: 0, // Hide points
-                        xAxisID: 'bar-x-axis'
-                    }]
-                },
-                options: {
-                    scales: {
-                        y: {
-                            beginAtZero: true,
-                            title: {
-                                display: true,
-                                text: 'Grams of CO2'
-                            }
-                        },
-                        x: {
-                            title: {
-                                display: true,
-                                text: 'Emissions Level'
-                            }
-                        }
-                    }
-                }
-            });
-        });
-    </script>
-    
-    
+
+
+
+
 </body>
 
 </html>
