@@ -203,8 +203,9 @@ table {
 
 th, td {
     border: 1px solid #dddddd;
-    text-align: left;
+    text-align: center;
     padding: 10px;
+    width: 50%;
     }
 
 th {
