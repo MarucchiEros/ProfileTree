@@ -1,12 +1,13 @@
+/* this function generates the graph for the carbon emissions rating */
 document.addEventListener('DOMContentLoaded', function () {
     const ctx = document.getElementById('emissionsChart').getContext('2d');
     const emissionsChart = new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: ['A', 'B', 'C', 'D', 'E', 'F'], // Emission levels
+            labels: ['A', 'B', 'C', 'D', 'E', 'F'],
             datasets: [{
                 label: 'Page Weight (MB)',
-                data: [0.3, 0.6, 0.9, 1.2, 1.5, 1.8], // Corresponding page weights
+                data: [0.3, 0.6, 0.9, 1.2, 1.5, 1.8],
                 backgroundColor: [
                     'rgba(75, 192, 192, 0.2)', // A
                     'rgba(75, 192, 192, 0.4)', // B
@@ -35,12 +36,12 @@ document.addEventListener('DOMContentLoaded', function () {
                         text: 'Page Weight (MB)'
                     },
                     ticks: {
-                        stepSize: 0.5, 
-                        max: 2.5 
+                        stepSize: 0.5,
+                        max: 2.5
                     },
                     grid: {
-                        color: function(context) {
-                            return 'rgba(0, 0, 0, 0.1)'; 
+                        color: function (context) {
+                            return 'rgba(0, 0, 0, 0.1)';
                         }
                     }
                 },
@@ -50,7 +51,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         text: 'Carbon Emissions Level'
                     },
                     grid: {
-                        display: true // Hide vertical grid lines
+                        display: true
                     }
                 }
             },
@@ -66,4 +67,8 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
-
+/* this function is used to show and hide the navbar */
+function toggleNavbar() {
+    var navbar = document.getElementById("navbar");
+    navbar.classList.toggle("active");
+}
