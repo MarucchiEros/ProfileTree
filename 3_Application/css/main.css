@@ -55,8 +55,38 @@ body {
     transform: scale(1.05);
 }
 
+#bin2 {
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s;
+}
+
+#bin2:hover {
+    transform: scale(1.05);
+}
+
+#bin3 {
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s;
+}
+
+#bin3:hover {
+    transform: scale(1.05);
+}
+
 input[type="text"] {
     width: 100%;
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 16px;
+}
+input[type="number"] {
+    width: 25%;
     border-radius: 10px;
     padding: 10px;
     font-size: 16px;
@@ -127,10 +157,14 @@ hr {
 
 h1 {
     -webkit-text-stroke: 3px black;
-    /* per Safari */
     text-stroke: 1px black;
-    /* standard */
     margin-bottom: -20px;
+}
+
+h2 {
+    -webkit-text-stroke: 1px black;
+    text-stroke: 1px black;
+    color: #28a745;
 }
 
 
@@ -139,5 +173,21 @@ label{
 }
 
 .inputVisits {
-    
+    transition: box-shadow 0.3s;
+}
+
+
+/* image in About us*/
+.social-icons img {
+    height: 45px;
+    width: auto;
+    margin: 5px; 
+    transition: opacity 0.3s ease, filter 0.3s ease;
+    box-shadow: none;
+}
+
+
+.social-icons img:hover {
+    opacity: 0.7; 
+    filter: brightness(2); 
 }
