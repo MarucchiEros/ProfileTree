@@ -4,14 +4,14 @@
 <head>
     <title>ProfileTree Carbon Footprint Calculator</title>
 
-    <!-- import metatags -->
+    <!-- Import metatags -->
     <meta charset="UTF-8">
     <meta name="description" content="Website Carbon Calculator">
     <meta name="keywords" content="HTML, CSS, JavaScript">
     <meta name="author" content="Eros Marucchi and Edoardo Antonini - ProfileTree">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- import css and favicon -->
+    <!-- Import CSS -->
     <link rel="stylesheet" href="css/bootstrap-5.0.2-dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/navbar.css">
@@ -26,10 +26,10 @@
 </head>
 
 <body>
-    <!-- widget cookie -->
+    <!-- Widget cookie -->
     <div class="elfsight-app-414acaff-10db-4ce1-b1c2-fa4d627b848a" data-elfsight-app-lazy></div>
 
-    <!-- widget contact us -->
+    <!-- Widget contact us -->
     <div class="elfsight-app-30f9ff2c-fd19-4d85-914d-6fdaa119ddf7" id="contact" data-elfsight-app-lazy></div>
 
     <div class="background">
@@ -43,63 +43,63 @@
 
             <div class="row justify-content-center">
                 <div class="col-md-6" id="bin">
-                    <div class="form-group">
+                    <div class="form-group" id="pdf-content">
+                        <div class="printContent">
+                            <h5 for="url">Enter the URL of the web page:</h5>
+                            <input type="text" id="url" class="form-control" placeholder="https://www.example.com">
+                        </div>
+                        <div class="d-grid gap-2 mt-3">
+                            <button onclick="getPageDetails()" class="btn btn-success">Calculate</button>
+                        </div>
 
-                        <!-- main content -->
-                        <h5 for="url">Enter the URL of the web page:</h5>
-                        <input type="text" id="url" class="form-control" placeholder="https://www.example.com">
-                    </div>
-                    <div class="d-grid gap-2 mt-3">
-                        <button onclick="getPageDetails()" class="btn btn-success">Calculate</button>
-                    </div>
+                        <div class="custom-loader mt-5"></div>
+                        <div id="result" class="result mt-5" style="display: none;">
+                            <h4>Result: <span id="site-name"></span></h4>
+                            <div id="firstResult" style="display: none; text-align: center;">
+                                <p id="carbon-emissions"></p>
+                                <p id="letterCarbonEmission"></p>
+                                <div class="progress">
+                                    <div id="carbon-emissions-bar" class="progress-bar"></div>
+                                    <div id="carbon-emissions-bar-red" class="progress-bar progress-bar-red"></div>
+                                </div>
+                                <br>
+                                <span class="about">Learn about our </span><a href="about.html" target="_blank"
+                                    class="footer-link">rating system</a><br>
+                                <hr>
 
-                    <div class="custom-loader mt-5"></div>
-                    <div id="result" class="result mt-5" style="display: none;">
-                        <h4>Result: <span id="site-name"></span></h4>
-                        <div id="firstResult" style="display: none; text-align: center;">
-                            <p id="carbon-emissions"></p>
-                            <p id="letterCarbonEmission"></p>
-                            <div class="progress">
-                                <div id="carbon-emissions-bar" class="progress-bar"></div>
-                                <div id="carbon-emissions-bar-red" class="progress-bar progress-bar-red"></div>
+                                <div id="secondResult" style="display: none;">
+                                    <p id="page-size"></p>
+                                    <p id="energy-consumption"></p>
+                                    <p id="http-requests"></p>
+                                    <p id="external-resources"></p>
+                                    <p id="content-type"></p>
+                                    <p id="response-time"></p>
+                                    <hr>
+                                    <p for="monthlyVisits">Monthly Visits:</p>
+                                    <input type="number" id="monthlyVisits" class="inputVisits" value="10000" min="1"
+                                        step="1" oninput="updateExamples(); checkInputValue(this);">
+                                    <p></p>
+                                    <div id="carbon-emission-examples"></div>
+                                </div>
+                                <div class="d-grid gap-2 mt-3">
+                                    <button id="moreInformation" onclick="showMoreInfo()" class="btn btn-success">More
+                                        information</button>
+                                    <button id="lessInformation" onclick="showLessInfo()" style="display: none;"
+                                        class="btn btn-success">Less information</button>
+                                </div>
                             </div>
                             <br>
-                            <span class="about">Learn about our </span><a href="about.html" target="_blank"
-                                class="footer-link">rating system</a><br>
-                            <hr>
-
-                            <div id="secondResult" style="display: none;">
-                                <p id="page-size"></p>
-                                <p id="energy-consumption"></p>
-                                <p id="http-requests"></p>
-                                <p id="external-resources"></p>
-                                <p id="content-type"></p>
-                                <p id="response-time"></p>
-                                <hr>
-                                <p for="monthlyVisits">Monthly Visits:</p>
-                                <input type="number" id="monthlyVisits" class="inputVisits" value="10000" min="1" step="1" oninput="updateExamples(); checkInputValue(this);">
-                                <p></p>
-                                <div id="carbon-emission-examples"></div>
-                            </div>
-                            <div class="d-grid gap-2 mt-3">
-                                <button id="moreInformation" onclick="showMoreInfo()" class="btn btn-success">More
-                                    information</button>
-                                <button id="lessInformation" onclick="showLessInfo()" style="display: none;"
-                                    class="btn btn-success">Less information</button>
-                            </div>
+                            <button style="display: none;" id="downloadPDF" onclick="downloadPDF()" class="btn btn-primary">Download
+                                PDF</button>
+                            <button onclick="customPrint()" class="btn btn-primary">download PDF or Print</button>
                         </div>
                     </div>
                 </div>
             </div>
-
-            <!-- Monthly Visits Input -->
-            <div class="d-grid gap-2 mt-3">
-
-            </div>
         </div>
     </div>
 
-    <!-- navbar -->
+    <!-- Navbar -->
     <div id="navbar" class="navbar">
         <ul>
             <p style="text-align: center;">Menu</p>
@@ -112,7 +112,7 @@
             <hr>
             <li><a href="#section4">Section 4</a></li>
             <hr>
-            <li><a href="WhereToFindUs.html">where to find us</a></li>
+            <li><a href="WhereToFindUs.html">About us</a></li>
             <hr>
         </ul>
     </div>
@@ -120,7 +120,7 @@
         <i class="ri-menu-line"></i>
     </div>
 
-    <!-- footer -->
+    <!-- Footer -->
     <div class="footer">
         <span class="footer-copyright">© Eros Marucchi and Edoardo Antonini</span> -
         <a href="https://profiletree.com/" class="footer-link">ProfileTree</a>
@@ -131,11 +131,11 @@
         <div class="gtranslate_wrapper" style="display: inline-block;"></div> -
         <a href="policy.html" class="footer-link">Privacy policy</a>
 
-        <!-- import js -->
+        <!-- Import JavaScript -->
         <script src="js/main.js"></script>
         <script src="js/graphic.js"></script>
 
-        <!-- import language js -->
+        <!-- Import language JS -->
         <script>
             window.gtranslateSettings = {
                 "default_language": "en",
@@ -144,19 +144,18 @@
             };
         </script>
         <script src="https://cdn.gtranslate.net/widgets/latest/flags.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
 
-
-        <!-- import bootstrap js -->
+        <!-- Import Bootstrap JavaScript -->
         <script src="css/bootstrap-5.0.2-dist/js/bootstrap.bundle.js"></script>
 
-        <!-- import graphic js -->
+        <!-- Import Graphic JS -->
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-        <!-- import contact us js -->
+        <!-- Import Contact Us JS -->
         <script src="https://static.elfsight.com/platform/platform.js" data-use-service-core defer></script>
 
     </div>
-
 </body>
 
 </html>

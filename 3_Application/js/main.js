@@ -74,18 +74,18 @@ function getLetterFromEmissions(emissions) {
     }
 }
 
-function echoLetter(letter){
-    if(letter == `A`){
+function echoLetter(letter) {
+    if (letter == `A`) {
         document.getElementById('letterCarbonEmission').innerHTML = `<img width="80" height="80" src="https://img.icons8.com/dotty/80/40C057/circled-a.png" alt="circled-a"/>`;
-    }else if(letter == `B`){
+    } else if (letter == `B`) {
         document.getElementById('letterCarbonEmission').innerHTML = `<img width="80" height="80" src="https://img.icons8.com/dotty/80/FAB005/circled-b.png" alt="circled-b"/>`;
-    }else if(letter == `C`){
+    } else if (letter == `C`) {
         document.getElementById('letterCarbonEmission').innerHTML = `<img width="80" height="80" src="https://img.icons8.com/dotty/80/FD7E14/circled-c.png" alt="circled-c"/>`;
-    }else if(letter == `D`){
+    } else if (letter == `D`) {
         document.getElementById('letterCarbonEmission').innerHTML = `<img width="80" height="80" src="https://img.icons8.com/dotty/80/7950F2/circled-d.png" alt="circled-d"/>`;
-    }else if(letter == `E`){
+    } else if (letter == `E`) {
         document.getElementById('letterCarbonEmission').innerHTML = `<img width="80" height="80" src="https://img.icons8.com/ios/50/228BE6/circled-e.png" alt="circled-e"/>`;
-    }else if(letter == `F`){
+    } else if (letter == `F`) {
         document.getElementById('letterCarbonEmission').innerHTML = `<img width="80" height="80" src="https://img.icons8.com/dotty/80/FA5252/circled-f.png" alt="circled-f"/>`;
     }
 }
@@ -241,4 +241,38 @@ function updateExamples() {
         </ul>
     `;
 }
+
+function downloadPDF() {
+    const doc = new jsPDF();
+
+    // Define the element to be rendered to PDF
+    const element = document.getElementById('pdf-content');
+
+    // Options for PDF generation
+    const options = {
+        margin: { top: 10, left: 10, right: 10, bottom: 10 },
+        html2canvas: { scale: 0.8 },
+        filename: 'carbon_footprint_report.pdf',
+        jsPDF: { unit: 'pt', format: 'a4', orientation: 'portrait' },
+        pagebreak: { mode: 'avoid-all' }
+    };
+
+    // Render HTML to PDF
+    html2pdf().from(element).set(options).save();
+}
+
+// Prints the contents of the page
+function customPrint() {
+    window.scrollTo(0, 0);
+    setTimeout(function () {
+        window.print();
+        document.body.removeChild(printContainer);
+    }, 300);
+}
+
+
+
+
+
+
 
