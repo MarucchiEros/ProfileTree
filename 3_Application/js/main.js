@@ -38,7 +38,10 @@ async function getPageDetails() {
         /*document.getElementById('external-resources').innerText = `Number of external resources: ${externalResources}`;*/
         /*document.getElementById('content-type').innerText = `content type: ${contentType}`;*/
         document.getElementById('response-time').innerText = `Response time: ${responseTime} ms`;
-        document.getElementById('carbon-emissions').innerText = `Carbon emissions: ${carbonEmissions.toFixed(2)} g CO2 | Level ${getLetterFromEmissions(carbonEmissions)}`;
+        document.getElementById('carbon-emissions').innerText = `Carbon emissions: ${carbonEmissions.toFixed(2)} g CO2`;
+        var letter = `${getLetterFromEmissions(carbonEmissions)}`;
+        echoLetter(letter);
+        
 
 
         /* emission bar animation */
@@ -58,6 +61,24 @@ async function getPageDetails() {
         document.querySelector('.custom-loader').style.display = 'none';
     }
 }
+
+
+function echoLetter(letter){
+    if(letter == `A`){
+        document.getElementById('letterCarbonEmission').innerHTML = `<img width="80" height="80" src="https://img.icons8.com/dotty/80/40C057/circled-a.png" alt="circled-a"/>`;
+    }else if(letter == `B`){
+        document.getElementById('letterCarbonEmission').innerHTML = `<img width="80" height="80" src="https://img.icons8.com/dotty/80/FAB005/circled-b.png" alt="circled-b"/>`;
+    }else if(letter == `C`){
+        document.getElementById('letterCarbonEmission').innerHTML = `<img width="80" height="80" src="https://img.icons8.com/dotty/80/FD7E14/circled-c.png" alt="circled-c"/>`;
+    }else if(letter == `D`){
+        document.getElementById('letterCarbonEmission').innerHTML = `<img width="80" height="80" src="https://img.icons8.com/dotty/80/7950F2/circled-d.png" alt="circled-d"/>`;
+    }else if(letter == `E`){
+        document.getElementById('letterCarbonEmission').innerHTML = `<img width="80" height="80" src="https://img.icons8.com/ios/50/228BE6/circled-e.png" alt="circled-e"/>`;
+    }else if(letter == `F`){
+        document.getElementById('letterCarbonEmission').innerHTML = `<img width="80" height="80" src="https://img.icons8.com/dotty/80/FA5252/circled-f.png" alt="circled-f"/>`;
+    }
+}
+
 
 /* this function decrees the carbon emission letter for each website */
 function getLetterFromEmissions(emissions) {
