@@ -30,7 +30,7 @@
     <div class="elfsight-app-414acaff-10db-4ce1-b1c2-fa4d627b848a" data-elfsight-app-lazy></div>
 
     <!-- widget contact us -->
-    <div class="elfsight-app-30f9ff2c-fd19-4d85-914d-6fdaa119ddf7" data-elfsight-app-lazy></div>
+    <div class="elfsight-app-30f9ff2c-fd19-4d85-914d-6fdaa119ddf7" id="contact" data-elfsight-app-lazy></div>
 
     <div class="background">
         <div class="overlay"></div>
@@ -52,6 +52,7 @@
                     <div class="d-grid gap-2 mt-3">
                         <button onclick="getPageDetails()" class="btn btn-success">Calculate</button>
                     </div>
+
                     <div class="custom-loader mt-5"></div>
                     <div id="result" class="result mt-5" style="display: none;">
                         <h4>Result: <span id="site-name"></span></h4>
@@ -74,6 +75,11 @@
                                 <p id="external-resources"></p>
                                 <p id="content-type"></p>
                                 <p id="response-time"></p>
+                                <hr>
+                                <p for="monthlyVisits">Monthly Visits:</p>
+                                <input type="number" id="monthlyVisits" class="inputVisits" value="10000" min="1" step="1" oninput="updateExamples(); checkInputValue(this);">
+                                <p></p>
+                                <div id="carbon-emission-examples"></div>
                             </div>
                             <div class="d-grid gap-2 mt-3">
                                 <button id="moreInformation" onclick="showMoreInfo()" class="btn btn-success">More
@@ -85,9 +91,14 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Monthly Visits Input -->
+            <div class="d-grid gap-2 mt-3">
+
+            </div>
         </div>
     </div>
-    
+
     <!-- navbar -->
     <div id="navbar" class="navbar">
         <ul>
@@ -125,7 +136,13 @@
         <script src="js/graphic.js"></script>
 
         <!-- import language js -->
-        <script>window.gtranslateSettings = { "default_language": "en", "languages": ["en", "fr", "de", "it", "es"], "wrapper_selector": ".gtranslate_wrapper" }</script>
+        <script>
+            window.gtranslateSettings = {
+                "default_language": "en",
+                "languages": ["en", "fr", "de", "it", "es"],
+                "wrapper_selector": ".gtranslate_wrapper"
+            };
+        </script>
         <script src="https://cdn.gtranslate.net/widgets/latest/flags.js" defer></script>
 
 
@@ -141,4 +158,5 @@
     </div>
 
 </body>
+
 </html>

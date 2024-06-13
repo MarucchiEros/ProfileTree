@@ -20,8 +20,7 @@ async function getPageDetails() {
         /* constant declaration */
         const data = await response.json();
         const pageSizeBytes = new Blob([data.contents]).size;
-        const pageSizeKB = pageSizeBytes / 1024;
-        const pageSizeMB = pageSizeKB / 1024;
+        const pageSizeMB = pageSizeBytes / (1024 * 1024);
         const energyConsumption = calculateEnergyConsumption(pageSizeBytes);
         const carbonEmissions = calculateCarbonEmissions(energyConsumption);
         const httpRequests = getHttpRequests(data.contents);
@@ -34,15 +33,11 @@ async function getPageDetails() {
         document.getElementById('site-name').innerText = getSiteName(url);
         document.getElementById('page-size').innerText = `Web page weight: ${pageSizeMB.toFixed(2)} MB`;
         document.getElementById('energy-consumption').innerText = `Estimated electricity consumption: ${energyConsumption.toFixed(2)} kWh`;
-        /*document.getElementById('http-requests').innerText = `Number of HTTP requests: ${httpRequests}`;*/
-        /*document.getElementById('external-resources').innerText = `Number of external resources: ${externalResources}`;*/
-        /*document.getElementById('content-type').innerText = `content type: ${contentType}`;*/
         document.getElementById('response-time').innerText = `Response time: ${responseTime} ms`;
-        document.getElementById('carbon-emissions').innerText = `Carbon emissions: ${carbonEmissions.toFixed(2)} g CO2`;
+        document.getElementById('carbon-emissions').innerText = `Carbon emissions: ${carbonEmissions.toFixed(2)} g CO2 `;
+
         var letter = `${getLetterFromEmissions(carbonEmissions)}`;
         echoLetter(letter);
-        
-
 
         /* emission bar animation */
         document.getElementById('carbon-emissions-bar').style.width = `0%`;
@@ -62,24 +57,6 @@ async function getPageDetails() {
     }
 }
 
-
-function echoLetter(letter){
-    if(letter == `A`){
-        document.getElementById('letterCarbonEmission').innerHTML = `<img width="80" height="80" src="https://img.icons8.com/dotty/80/40C057/circled-a.png" alt="circled-a"/>`;
-    }else if(letter == `B`){
-        document.getElementById('letterCarbonEmission').innerHTML = `<img width="80" height="80" src="https://img.icons8.com/dotty/80/FAB005/circled-b.png" alt="circled-b"/>`;
-    }else if(letter == `C`){
-        document.getElementById('letterCarbonEmission').innerHTML = `<img width="80" height="80" src="https://img.icons8.com/dotty/80/FD7E14/circled-c.png" alt="circled-c"/>`;
-    }else if(letter == `D`){
-        document.getElementById('letterCarbonEmission').innerHTML = `<img width="80" height="80" src="https://img.icons8.com/dotty/80/7950F2/circled-d.png" alt="circled-d"/>`;
-    }else if(letter == `E`){
-        document.getElementById('letterCarbonEmission').innerHTML = `<img width="80" height="80" src="https://img.icons8.com/ios/50/228BE6/circled-e.png" alt="circled-e"/>`;
-    }else if(letter == `F`){
-        document.getElementById('letterCarbonEmission').innerHTML = `<img width="80" height="80" src="https://img.icons8.com/dotty/80/FA5252/circled-f.png" alt="circled-f"/>`;
-    }
-}
-
-
 /* this function decrees the carbon emission letter for each website */
 function getLetterFromEmissions(emissions) {
     if (emissions >= 1.5) {
@@ -94,6 +71,22 @@ function getLetterFromEmissions(emissions) {
         return 'B';
     } else {
         return 'A';
+    }
+}
+
+function echoLetter(letter){
+    if(letter == `A`){
+        document.getElementById('letterCarbonEmission').innerHTML = `<img width="80" height="80" src="https://img.icons8.com/dotty/80/40C057/circled-a.png" alt="circled-a"/>`;
+    }else if(letter == `B`){
+        document.getElementById('letterCarbonEmission').innerHTML = `<img width="80" height="80" src="https://img.icons8.com/dotty/80/FAB005/circled-b.png" alt="circled-b"/>`;
+    }else if(letter == `C`){
+        document.getElementById('letterCarbonEmission').innerHTML = `<img width="80" height="80" src="https://img.icons8.com/dotty/80/FD7E14/circled-c.png" alt="circled-c"/>`;
+    }else if(letter == `D`){
+        document.getElementById('letterCarbonEmission').innerHTML = `<img width="80" height="80" src="https://img.icons8.com/dotty/80/7950F2/circled-d.png" alt="circled-d"/>`;
+    }else if(letter == `E`){
+        document.getElementById('letterCarbonEmission').innerHTML = `<img width="80" height="80" src="https://img.icons8.com/ios/50/228BE6/circled-e.png" alt="circled-e"/>`;
+    }else if(letter == `F`){
+        document.getElementById('letterCarbonEmission').innerHTML = `<img width="80" height="80" src="https://img.icons8.com/dotty/80/FA5252/circled-f.png" alt="circled-f"/>`;
     }
 }
 
@@ -158,12 +151,48 @@ function getSiteName(url) {
     return hostname;
 }
 
-/* this function is used to show additional information once a button is clicked */
 function showMoreInfo() {
+    const carbonEmissionsText = document.getElementById('carbon-emissions').innerText;
+    const carbonEmissions = parseFloat(carbonEmissionsText.split(' ')[2]);
+
+    let monthlyVisits = parseInt(document.getElementById('monthlyVisits').value);
+    if (isNaN(monthlyVisits) || monthlyVisits < 1) {
+        alert('Please enter a valid number of monthly visits.');
+        monthlyVisits = 10000; // Reset to default value 10000
+        document.getElementById('monthlyVisits').value = monthlyVisits; // Update input field
+        return;
+    }
+
+    const annualVisits = monthlyVisits * 12;
+    const annualCO2 = (carbonEmissions / 1000) * annualVisits;
+
+    if (isNaN(annualCO2)) {
+        alert('Error calculating annual CO2 emissions.');
+        return;
+    }
+
+    const teaCups = (annualCO2 / 0.00736).toFixed(0); // 1 cup of tea = 0.00736 kg CO2
+    const smartphoneCharges = (annualCO2 / 0.0053).toFixed(0); // 1 smartphone charge = 0.0053 kg CO2
+    const kWhEnergy = (annualCO2 / 0.128).toFixed(2); // 1 kWh = 0.128 kg CO2
+
+    // Check for NaN in conversions
+    if (isNaN(teaCups) || isNaN(smartphoneCharges) || isNaN(kWhEnergy)) {
+        alert('Error converting CO2 emissions.');
+        return;
+    }
+
+    document.getElementById('carbon-emission-examples').innerHTML = `
+        <p>With ${monthlyVisits} visits per month, this page emits approximately ${annualCO2.toFixed(2)} kg of CO2, which is equivalent to:</p>
+        <ul>
+            <li>Boiling water for ${teaCups} cups of tea</li>
+            <li>Charging an average smartphone ${smartphoneCharges} times</li>
+            <li>Consuming ${kWhEnergy} kWh of energy</li>
+        </ul>
+    `;
+
     document.getElementById('secondResult').style.display = 'block';
     document.getElementById('moreInformation').style.display = 'none';
     document.getElementById('lessInformation').style.display = 'inline-block';
-
 }
 
 /* this function is used to hide additional information once a button is clicked */
@@ -173,4 +202,43 @@ function showLessInfo() {
     document.getElementById('lessInformation').style.display = 'none';
 }
 
+/* Function to update CO2 emission examples based on monthly visits */
+function updateExamples() {
+    const carbonEmissionsText = document.getElementById('carbon-emissions').innerText;
+    const carbonEmissions = parseFloat(carbonEmissionsText.split(' ')[2]);
+
+    const monthlyVisits = parseInt(document.getElementById('monthlyVisits').value);
+    if (isNaN(monthlyVisits) || monthlyVisits < 1) {
+        alert('Please enter a valid number of monthly visits.');
+        return;
+    }
+
+    const annualVisits = monthlyVisits * 12;
+    const annualCO2 = (carbonEmissions / 1000) * annualVisits;
+
+    if (isNaN(annualCO2)) {
+        alert('Error calculating annual CO2 emissions.');
+        return;
+    }
+
+    const teaCups = (annualCO2 / 0.00736).toFixed(0); // 1 cup of tea = 0.00736 kg CO2
+    const smartphoneCharges = (annualCO2 / 0.0053).toFixed(0); // 1 smartphone charge = 0.0053 kg CO2
+    const kWhEnergy = (annualCO2 / 0.128).toFixed(2); // 1 kWh = 0.128 kg CO2
+
+    // Check for NaN in conversions
+    if (isNaN(teaCups) || isNaN(smartphoneCharges) || isNaN(kWhEnergy)) {
+        monthlyVisits = 10000; // Reset to default value 10000
+        alert('Error converting CO2 emissions.');
+        return;
+    }
+
+    document.getElementById('carbon-emission-examples').innerHTML = `
+        <p>With ${monthlyVisits} visits per month, this page emits approximately ${annualCO2.toFixed(2)} kg of CO2, which is equivalent to:</p>
+        <ul>
+            <li>Boiling water for ${teaCups} cups of tea</li>
+            <li>Charging an average smartphone ${smartphoneCharges} times</li>
+            <li>Consuming ${kWhEnergy} kWh of energy</li>
+        </ul>
+    `;
+}
 
