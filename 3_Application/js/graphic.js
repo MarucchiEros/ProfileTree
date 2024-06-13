@@ -9,20 +9,12 @@ document.addEventListener('DOMContentLoaded', function () {
                 label: 'Page Weight (MB)',
                 data: [0.3, 0.6, 0.9, 1.2, 1.5, 1.8],
                 backgroundColor: [
-                    'rgba(75, 192, 192, 0.2)', // A
-                    'rgba(75, 192, 192, 0.4)', // B
-                    'rgba(75, 192, 192, 0.6)', // C
-                    'rgba(255, 206, 86, 0.6)', // D
-                    'rgba(255, 99, 132, 0.6)', // E
-                    'rgba(255, 99, 132, 0.8)'  // F
-                ],
-                borderColor: [
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(255, 99, 132, 1)'
+                    'rgba(40, 167, 70, 0.5)', // A
+                    'rgba(238, 255, 0, 0.5)', // B
+                    'rgba(255, 166, 0, 0.5)', // C
+                    'rgba(178, 0, 248, 0.5)', // D
+                    'rgba(0, 4, 255, 0.5)', // E
+                    'rgba(255, 0, 0, 0.5)'  // F
                 ],
                 borderWidth: 1
             }]
