@@ -1,0 +1,2 @@
+This project was developed by Eros Marucchi and Edoardo Antonini for the company ProfileTree during the first week of their internship. 
+We would like to point out that the calculator provides rough estimates of CO2 emissions, so the results should not be considered completely accurate.
