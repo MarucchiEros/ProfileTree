@@ -45,13 +45,14 @@
                 <div class="col-md-6" id="bin">
                     <div class="form-group" id="pdf-content">
                         <div class="printContent">
+
                             <h5 for="url">Enter the URL of the web page:</h5>
                             <input type="text" id="url" class="form-control" placeholder="https://www.example.com">
                         </div>
                         <div class="d-grid gap-2 mt-3">
                             <button onclick="getPageDetails()" class="btn btn-success">Calculate</button>
                         </div>
-
+                        <!-- Main content -->
                         <div class="custom-loader mt-5"></div>
                         <div id="result" class="result mt-5" style="display: none;">
                             <h4>Result: <span id="site-name"></span></h4>
@@ -89,7 +90,8 @@
                                 </div>
                             </div>
                             <br>
-                            <button style="display: none;" id="downloadPDF" onclick="downloadPDF()" class="btn btn-primary">Download
+                            <button style="display: none;" id="downloadPDF" onclick="downloadPDF()"
+                                class="btn btn-primary">Download
                                 PDF</button>
                             <button onclick="customPrint()" class="btn btn-primary">download PDF or Print</button>
                         </div>
@@ -108,7 +110,7 @@
             <hr>
             <li><a href="about.html">Rating system</a></li>
             <hr>
-           <!--  <li><a href="#section3">Section 3</a></li> 
+            <!--  <li><a href="#section3">Section 3</a></li> 
             <hr>
             <li><a href="#section4">Section 4</a></li>
             <hr>-->
@@ -134,15 +136,9 @@
         <!-- Import JavaScript -->
         <script src="js/main.js"></script>
         <script src="js/graphic.js"></script>
+        <script src="js/navbar.js"></script>
 
-        <!-- Import language JS -->
-        <script>
-            window.gtranslateSettings = {
-                "default_language": "en",
-                "languages": ["en", "fr", "de", "it", "es"],
-                "wrapper_selector": ".gtranslate_wrapper"
-            };
-        </script>
+        <!-- Import libraries -->
         <script src="https://cdn.gtranslate.net/widgets/latest/flags.js" defer></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
 
@@ -154,7 +150,6 @@
 
         <!-- Import Contact Us JS -->
         <script src="https://static.elfsight.com/platform/platform.js" data-use-service-core defer></script>
-
     </div>
 </body>
 

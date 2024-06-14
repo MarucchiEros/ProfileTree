@@ -11,13 +11,11 @@ async function getPageDetails() {
         document.getElementById('result').style.display = 'none';
         document.getElementById('firstResult').style.display = 'none';
 
-        /* library to obtain data from websites */
         const response = await fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(url)}`);
         if (!response.ok) {
             throw new Error('An error occurred during information retrieval. Please try again.');
         }
 
-        /* constant declaration */
         const data = await response.json();
         const pageSizeBytes = new Blob([data.contents]).size;
         const pageSizeMB = pageSizeBytes / (1024 * 1024);
@@ -39,7 +37,6 @@ async function getPageDetails() {
         var letter = `${getLetterFromEmissions(carbonEmissions)}`;
         echoLetter(letter);
 
-        /* emission bar animation */
         document.getElementById('carbon-emissions-bar').style.width = `0%`;
         document.getElementById('carbon-emissions-bar-red').style.width = `0%`;
         setTimeout(() => {
@@ -74,6 +71,7 @@ function getLetterFromEmissions(emissions) {
     }
 }
 
+/* this function is used to print the image of the letter depending on the level of emission */
 function echoLetter(letter) {
     if (letter == `A`) {
         document.getElementById('letterCarbonEmission').innerHTML = `<img width="80" height="80" src="https://img.icons8.com/dotty/80/40C057/circled-a.png" alt="circled-a"/>`;
@@ -151,6 +149,7 @@ function getSiteName(url) {
     return hostname;
 }
 
+/* this function is used to display additional information on the page */
 function showMoreInfo() {
     const carbonEmissionsText = document.getElementById('carbon-emissions').innerText;
     const carbonEmissions = parseFloat(carbonEmissionsText.split(' ')[2]);
@@ -158,8 +157,8 @@ function showMoreInfo() {
     let monthlyVisits = parseInt(document.getElementById('monthlyVisits').value);
     if (isNaN(monthlyVisits) || monthlyVisits < 1) {
         alert('Please enter a valid number of monthly visits.');
-        monthlyVisits = 10000; // Reset to default value 10000
-        document.getElementById('monthlyVisits').value = monthlyVisits; // Update input field
+        monthlyVisits = 10000;
+        document.getElementById('monthlyVisits').value = monthlyVisits;
         return;
     }
 
@@ -171,11 +170,10 @@ function showMoreInfo() {
         return;
     }
 
-    const teaCups = (annualCO2 / 0.00736).toFixed(0); // 1 cup of tea = 0.00736 kg CO2
-    const smartphoneCharges = (annualCO2 / 0.0053).toFixed(0); // 1 smartphone charge = 0.0053 kg CO2
-    const kWhEnergy = (annualCO2 / 0.128).toFixed(2); // 1 kWh = 0.128 kg CO2
+    const teaCups = (annualCO2 / 0.00736).toFixed(0);
+    const smartphoneCharges = (annualCO2 / 0.0053).toFixed(0);
+    const kWhEnergy = (annualCO2 / 0.128).toFixed(2);
 
-    // Check for NaN in conversions
     if (isNaN(teaCups) || isNaN(smartphoneCharges) || isNaN(kWhEnergy)) {
         alert('Error converting CO2 emissions.');
         return;
@@ -221,13 +219,12 @@ function updateExamples() {
         return;
     }
 
-    const teaCups = (annualCO2 / 0.00736).toFixed(0); // 1 cup of tea = 0.00736 kg CO2
-    const smartphoneCharges = (annualCO2 / 0.0053).toFixed(0); // 1 smartphone charge = 0.0053 kg CO2
-    const kWhEnergy = (annualCO2 / 0.128).toFixed(2); // 1 kWh = 0.128 kg CO2
+    const teaCups = (annualCO2 / 0.00736).toFixed(0);
+    const smartphoneCharges = (annualCO2 / 0.0053).toFixed(0);
+    const kWhEnergy = (annualCO2 / 0.128).toFixed(2);
 
-    // Check for NaN in conversions
     if (isNaN(teaCups) || isNaN(smartphoneCharges) || isNaN(kWhEnergy)) {
-        monthlyVisits = 10000; // Reset to default value 10000
+        monthlyVisits = 10000;
         alert('Error converting CO2 emissions.');
         return;
     }
@@ -242,13 +239,12 @@ function updateExamples() {
     `;
 }
 
+// Download the contents of the page
 function downloadPDF() {
     const doc = new jsPDF();
 
-    // Define the element to be rendered to PDF
     const element = document.getElementById('pdf-content');
 
-    // Options for PDF generation
     const options = {
         margin: { top: 10, left: 10, right: 10, bottom: 10 },
         html2canvas: { scale: 0.8 },
@@ -257,7 +253,6 @@ function downloadPDF() {
         pagebreak: { mode: 'avoid-all' }
     };
 
-    // Render HTML to PDF
     html2pdf().from(element).set(options).save();
 }
 
