@@ -182,7 +182,7 @@ function showMoreInfo() {
     }
 
     document.getElementById('carbon-emission-examples').innerHTML = `
-        <p>With ${monthlyVisits} visits per month, this page emits approximately ${annualCO2.toFixed(2)} kg of CO2, which is equivalent to:</p>
+        <p>With this visits per month, this page emits approximately ${annualCO2.toFixed(2)} kg of CO2, which is equivalent to:</p>
         <ul>
             <li>Boiling water for ${teaCups} cups of tea</li>
             <li>Charging an average smartphone ${smartphoneCharges} times</li>
@@ -233,7 +233,7 @@ function updateExamples() {
     }
 
     document.getElementById('carbon-emission-examples').innerHTML = `
-        <p>With ${monthlyVisits} visits per month, this page emits approximately ${annualCO2.toFixed(2)} kg of CO2, which is equivalent to:</p>
+        <p>With this visits per month, this page emits approximately ${annualCO2.toFixed(2)} kg of CO2, which is equivalent to:</p>
         <ul>
             <li>Boiling water for ${teaCups} cups of tea</li>
             <li>Charging an average smartphone ${smartphoneCharges} times</li>
