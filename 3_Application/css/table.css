@@ -21,8 +21,33 @@ th {
     color: white;
 }
 
-tr:nth-child(even) {
-    background-color: rgba(255, 255, 255, 0.8);
+tr:nth-child(1) {
+    background-color: rgba(75, 192, 192, 0.2);
+    color: #000;
+}
+
+tr:nth-child(2) {
+    background-color: rgba(75, 192, 192, 0.4);
+    color: #000;
+}
+
+tr:nth-child(3) {
+    background-color: rgba(75, 192, 192, 0.6);
+    color: #000;
+}
+
+tr:nth-child(4) {
+    background-color: rgba(255, 206, 86, 0.6);
+    color: #000;
+}
+
+tr:nth-child(5) {
+    background-color: rgba(255, 99, 132, 0.6);
+    color: #000;
+}
+
+tr:nth-child(6) {
+    background-color: rgba(255, 99, 132, 0.8);
     color: #000;
 }
 
