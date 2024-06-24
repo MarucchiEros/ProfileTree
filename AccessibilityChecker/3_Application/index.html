@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Accessibility Checker</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>Website Accessibility Checker</h1>
+        </header>
+
+        <div class="form-container">
+            <form id="accessibility-form">
+                <input type="text" id="url-input" placeholder="Enter website URL">
+                <button type="submit" id="check-button">Check Accessibility</button>
+            </form>
+        </div>
+
+        <div id="accessibility-stats">
+            <div id="screenshot"></div>
+            <div id="accessibility-percentage"></div>
+            <canvas id="pie-chart" width="150" height="150"></canvas>
+            <div id="result"></div>
+            <div id="screenshot-section"></div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Your Company. All rights reserved.</p>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+
+</html>
