@@ -5,36 +5,154 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Website Accessibility Checker</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/bootstrap-5.0.2-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/import.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/div.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/2.5.0/remixicon.css">
+    <link rel="icon" href="image/profiletree_logo.png" type="image/png">
+
+    <style>
+        #accessibility-stats {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        #accessibility-stats > div {
+            /* flex: 1; */
+            min-width: 0;
+        }
+    </style>
 </head>
 
 <body>
-    <div class="container">
-        <header>
-            <h1>Website Accessibility Checker</h1>
-        </header>
-
+    <div class="background">
         <div class="form-container">
             <form id="accessibility-form">
-                <input type="text" id="url-input" placeholder="Enter website URL">
-                <button type="submit" id="check-button">Check Accessibility</button>
+                <div class="row mb-5">
+                    <div class="col-12 text-center align-items-center">
+                        <h1 class="display-2 mb-0">Accessibility checker</h1>
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-md-6">
+                        <h5 for="url">Enter the URL of the web page:</h5>
+                        <div class="form-group no-gap" id="pdf-content">
+                            <div class="col-9">
+                                <input type="text" id="url-input" class="form-control"
+                                    placeholder="https://www.example.com">
+                            </div>
+                            <div class=" col-3 d-grid gap-2 ">
+                                <button id="check-button" class="btn btn-outline-success">Test</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </form>
+            <br>
+            <br>
+            <br>
+            <div id="div1">
+                <div class="content col-9">
+                    <p>1</p>
+                </div>
+                <br>
+                <div class="content col-9" id="2">
+                    <p>2</p>
+                </div>
+                <br>
+                <div class="content col-9" id="3">
+                    <p>3</p>
+                </div>
+                <br>
+                <div class="content col-9" id="4">
+                    <div class="content2">
+                        <h2>We are here!</h2>
+                        <div class="col-md-12">
+
+                            <h4>BELFAST</h4>
+                            <iframe
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2310.7940671074944!2d-5.936691422872868!3d54.60762037960927!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x486108f7fa9cd353%3A0xc430b95f86682ec!2sProfileTree%20Web%20Design%20and%20Digital%20Marketing!5e0!3m2!1sen!2suk!4v1718195656037!5m2!1sen!2suk"
+                                width="100%" height="300px" style="border:0;" allowfullscreen="" loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade"></iframe>
+                            <br>
+                            <br>
+                            <h5>McSweeney Centre,</h5>
+                            <h5>31 Henry Pl,</h5>
+                            <h5>Belfast BT15 2AY</h5>
+                            <h5>028 9568 0364</h5>
+                        </div>
+                </div>
+                </div>
+                <br>
+                <div class="content col-9">
+                    <div class="row justify-content-center">
+                        <div class="content2 col-md-5" id="bin5">
+                            <h2>SOCIAL</h2>
+                            <p>hello@profiletree</p>
+                            <div class="social-icons">
+                                <a href="https://www.instagram.com/profiletree/"><img
+                                        src="image/social/instagram.png"></a>
+                                <a href="https://www.facebook.com/ProfileTree/"><img
+                                        src="image/social/facebook.png"></a>
+                                <a href="https://x.com/ProfileTree"><img src="image/social/twitter.png"></a>
+                                <a href="https://www.linkedin.com/company/profiletree"><img
+                                        src="image/social/linkedin.png"></a>
+                                <a href="https://www.youtube.com/c/Profiletree"><img src="image/social/youtube.png"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <div id="accessibility-stats">
-            <div id="screenshot"></div>
-            <div id="accessibility-percentage"></div>
-            <canvas id="pie-chart" width="150" height="150"></canvas>
-            <div id="result"></div>
-            <div id="screenshot-section"></div>
+        <div id="accessibility-stats" class="row" style="display: none;">
+            
+            <div class="div2 col-2"> </div> <!-- vuota -->
+            <div class="div2 col-2" id="divResult" ><!-- foto, grafico, percentuale -->
+                <br>
+                <div id="screenshot"></div>
+                <br>
+                <canvas id="pie-chart" width="150" height="150"></canvas>
+                <br>
+                <div id="accessibility-percentage"></div>
+                <div id="buttons">
+                    <a href="https://profiletree.com/"><button type="button" class="click btn btn-success">fix your problem</button></a>
+                    <br>
+                    <br>
+                    <button type="button" class="click btn btn-success" id="reloadButton">calculate another site</button>
+                </div>
+            </div>
+            <div class="div2 col-4 "><!-- nome sito, test -->
+                <br>
+                <h2 id="page-title"></h2>
+                <div id="result"></div>
+                <div id="screenshot-section"></div>
+            </div>
+            <div class="div2 col-4 "></div> <!-- vuota -->
+        </div>
+
+        <div class="footer">
+            <span class="footer-copyright">© Eros Marucchi and Edoardo Antonini</span> -
+            <a href="https://profiletree.com/" class="footer-link">ProfileTree</a>
+            <a href="https://profiletree.com/" class="footer-link">
+                <img class="logo" src="image/profiletree_logo.png" alt="Logo ProfileTree"></a>
+            <br>
+            <div class="gtranslate_wrapper" style="display: inline-block;"></div> -
+            <a href="policy.html" class="footer-link">Privacy policy</a>
         </div>
     </div>
-
-    <footer>
-        <p>&copy; 2024 Your Company. All rights reserved.</p>
-    </footer>
-
+    <!-- Import JavaScript -->
+    <script src="js/flag.js"></script>
+    <!-- Import libraries -->
+    <script src="https://cdn.gtranslate.net/widgets/latest/flags.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+    <!-- Import Bootstrap JavaScript -->
+    <script src="css/bootstrap-5.0.2-dist/js/bootstrap.bundle.js"></script>
     <script src="js/script.js"></script>
+    <script src="js/button.js"></script>
 </body>
 
 </html>
