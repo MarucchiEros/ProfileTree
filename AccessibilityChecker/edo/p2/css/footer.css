@@ -1,0 +1,14 @@
+.footer {
+    background-color: rgba(0, 0, 0, 1);
+    color: #fff;
+    padding: 10px 0;
+    text-align: center;
+    font-size: large;
+    line-height: 50px;
+    width: 100%;
+}
+
+.footer a {
+    color: #28a745;
+    text-decoration: none;
+}
