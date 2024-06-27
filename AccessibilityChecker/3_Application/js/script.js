@@ -43,7 +43,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Mostra la percentuale di accessibilità con il grafico a torta
             const accessibilityPercentage = document.getElementById('accessibility-percentage');
-            accessibilityPercentage.innerHTML = `<p>Accessibility Score: ${accessibilityScore}%</p>`;
+            if (accessibilityScore >= 90){
+                accessibilityPercentage.innerHTML = `<p style="color: #4CAF50; font-size:200%;">Accessibility Score: ${accessibilityScore}%</p>`;
+            }else if (accessibilityScore >= 70){
+                accessibilityPercentage.innerHTML = `<p style="color: #FFC107; font-size:200%;">Accessibility Score: ${accessibilityScore}%</p>`
+            }else{
+                accessibilityPercentage.innerHTML = `<p style="color: #F44336; font-size:200%;">Accessibility Score: ${accessibilityScore}%</p>`
+            }            
             drawPieChart(accessibilityScore);
 
             let resultHTML = `<div id="accessibility-report">`;
@@ -168,3 +174,9 @@ document.addEventListener('DOMContentLoaded', () => {
         else return '#F44336';
     }
 });
+
+
+
+function closeNavbar(){
+    document.getElementById("navbar1").style.display = "none";
+}
