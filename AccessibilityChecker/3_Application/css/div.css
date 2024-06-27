@@ -6,7 +6,7 @@
 }
 
 #buttons {
-    margin-top: auto; /* Spinge il div verso il basso, posizionandolo in fondo */
+    margin-top: auto; /
 }
 
 #div1 {
@@ -44,4 +44,17 @@
     background-color: rgba(255, 255, 255, 0.3);
 }
 
+.important-title{
+    color: rgb(1, 7, 54);
+    font-size: 130%;
+}
+
+.important-subtitle{
+    color: rgb(69, 84, 199);
+    font-size: 120%;
+}
+
+.important-text{
+    color: black;
+}
 
