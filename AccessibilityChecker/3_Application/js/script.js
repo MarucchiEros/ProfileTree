@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Mostra il titolo della pagina nell'header del report
             const pageTitleElement = document.getElementById('page-title');
-            pageTitleElement.innerText = `Accessibility Report for ${url}`;
+            pageTitleElement.innerHTML = `Accessibility Report for <b>${url}</b>`;
 
             // Calcolo percentuale di accessibilità
             let accessibilityScore = data.accessibilityScore < 0 ? 0 : data.accessibilityScore;
@@ -52,8 +52,8 @@ document.addEventListener('DOMContentLoaded', () => {
             }            
             drawPieChart(accessibilityScore);
 
-            let resultHTML = `<div id="accessibility-report">`;
-
+            let resultPass = `<div id="accessibility-report">`;
+            let resultErr = `<div id="accessibility-report">`;
             const passedTests = [];
             const failedTests = [];
 
@@ -103,25 +103,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Costruisci la tabella dei test passati
             if (passedTests.length > 0) {
-                resultHTML += `<br><div id="passed-tests"><h3>Tests Passed</h3><table class="results-table">`;
+                resultPass += `<br><div id="passed-tests"><h3>Tests Passed</h3><table class="results-table">`;
                 passedTests.forEach(test => {
-                    resultHTML += `<tr><td>${test}</td><td style="color: #198754">Passed</td></tr>`;
+                    resultPass += `<tr><td>${test}</td><td style="color: #198754">Passed</td></tr>`;
                 });
-                resultHTML += `</table></div>`;
+                resultPass += `</table></div>`;
+                resultPass += `</div>`;
             }
 
             // Costruisci la tabella dei test non passati
             if (failedTests.length > 0) {
-                resultHTML += `<br><div id="failed-tests"><h3>Tests Failed</h3><table class="results-table">`;
+                resultErr += `<br><div id="failed-tests"><h3>Tests Failed</h3><table class="results-table">`;
                 failedTests.forEach(test => {
-                    resultHTML += `<tr><td>${test}</td><td style="color: #871919">Failed</td></tr>`;
+                    resultErr+= `<tr><td>${test}</td><td style="color: #871919">Failed</td></tr>`;
                 });
-                resultHTML += `</table></div>`;
+                resultErr+= `</table></div>`;
+                resultErr += `</div>`;
             }
 
-            resultHTML += `</div>`;
-
-            document.getElementById('result').innerHTML = resultHTML;
+            document.getElementById('resultPass').innerHTML = resultPass;
+            document.getElementById('resultErr').innerHTML = resultErr;
 
             const screenshot = document.getElementById('screenshot');
             if (data.screenshot) {
