@@ -42,9 +42,7 @@
     background-color: #f2f2f2;
 }
 
-/* #divResult, #divResult2, #row1{
-    background-color: rgba(255, 255, 255, 0.7);
-} */
+
 
 #row1 {
     height: 100px;
@@ -52,4 +50,37 @@
     justify-content: center;  /* Center horizontally */
     align-items: center;      /* Center vertically */
     text-align: center;
+}
+
+#buttons {
+    position: absolute;
+    bottom: 20px; /* distanza dal fondo della pagina */
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px; /* spazio tra i bottoni */
+}
+
+.click {
+    margin-bottom: 20%;
+}
+
+.important-title {
+    color: rgb(1, 7, 54);
+    font-size: 130%;
+}
+
+.important-subtitle {
+    color: rgb(69, 84, 199);
+    font-size: 120%;
+}
+
+.important-text {
+    color: black;
+}
+
+#screenshot{
+    margin-top: 67px;
 }

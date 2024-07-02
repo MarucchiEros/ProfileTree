@@ -139,22 +139,23 @@
                         importance of compliance with accessibility laws.</p>
                     <h6 class="important-subtitle">Where</h6>
                     <p class="important-text">The "Where" section contains information about the organization's physical
-                        location with an interactive map</p>
+                        location with an interactive map
+                     </p>
                     <h6 class="important-subtitle">Social Contacts</h6>
                     <p class="important-text">The "Social" section provides contact information and links to the
-                        organization's social media profiles.</p>
-
+                        organization's social media profiles.
+                    </p>
                     <h5 class="important-title">Page Translation</h5>
                     <h6 class="important-subtitle">Google Translate</h6>
                     <p class="important-text">At the bottom of the site, there is a Google Translate widget that allows
                         you to translate the page content into different languages (English, French, German, Italian,
-                        Spanish).</p>
-
+                        Spanish).
+                    </p>
                     <h5 class="important-title" id="important">Copyright Information and Privacy Policy</h5>
                     <h6 class="important-subtitle">Footer</h6>
                     <p class="important-text">The site footer contains copyright information and a link to the
-                        organization's privacy policy.</p>
-
+                        organization's privacy policy.
+                    </p>
                 </div>
                 <br>
                 <div class="content col-9" id="2">
@@ -193,7 +194,6 @@
                         Positive Brand Image: Demonstrating a commitment to accessibility can enhance your brand’s
                         reputation and appeal to socially conscious consumers. It shows that your company values
                         inclusivity and is proactive in addressing the needs of all users.
-
                     </p>
                     <h6 class="important-title" id="about"><b>Technological Advancements</b></h6>
                     <p class="important-text">
@@ -338,113 +338,46 @@
                 </div>
             </div>
         </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         <div id="accessibility-stats" class="row" style="display: none;">
-            <div class="row" id="row1">
+            <div class="row" id="row1"> <!-- Nome sito -->
                 <h2 id="page-title"></h2>
             </div>
             <div class="row">
-                <div class="div2 col-3" id="divResult"><!-- foto, grafico, percentuale -->
-                    <br>
-                    <br>
+                <div class="div2 col-3" id="divResult"><!-- Foto -->
                     <div id="screenshot"></div>
-                    <br>
-                    <div id="buttons"></div>
-                    <br>
-                    <button type="button" class="click btn btn-success" id="reloadButton">calculate another site</button>
                 </div>
-                <div class="div2 col-3" id="divResult2">
-                    <canvas id="pie-chart" width="150" height="150"></canvas>
-                    <br>
-                    <div id="accessibility-percentage"></div>
-                    <div id="buttons">
-                        <a href="https://profiletree.com/"><button type="button" class="click btn btn-success">fix your problem</button></a>
-                        <br>
-                    </div>
-                    <div class="div2 col-1"> </div> <!-- vuota -->
-                </div>
-                <div class="div2 col-3 "><!-- nome sito, test -->
+                <div class="div2 col-3"><!-- Test pass -->
                     <div id="resultPass"></div>
                 </div>
-                <div class="div2 col-3 "><!-- nome sito, test -->
+                <div class="div2 col-3"><!-- Test fail -->
                     <div id="resultErr"></div>
+                </div>
+                <div class="div2 col-3" id="divResult2"><!-- Grafico -->
+                    <div id="accessibility-percentage"></div>
+                    <canvas id="pie-chart" width="150" height="150"></canvas>
+                </div>
+            </div>
+            <div class="row" id="row3"> <!-- pulsanti -->
+                <div class="col-3">
+                    <button type="button" class="click btn btn-success" id="reloadButton">Calculate Another
+                        Site</button>
+                </div>
+                <div class="col-3"></div>
+                <div class="col-3"></div>
+                <div class="col-3">
+                    <button type="button" class="click btn btn-success">Fix Your Problem</button>
                 </div>
             </div>
         </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        <div class="footer">
-            <span class="footer-copyright">© Eros Marucchi and Edoardo Antonini</span> -
-            <a href="https://profiletree.com/" class="footer-link">ProfileTree</a>
-            <a href="https://profiletree.com/" class="footer-link">
-                <img class="logo" src="image/profiletree_logo.png" alt="Logo ProfileTree"></a>
-            <br>
-            <div class="gtranslate_wrapper" style="display: inline-block;"></div> -
-            <a href="policy.html" class="footer-link">Privacy policy</a>
-        </div>
+    </div>
+    <div class="footer">
+        <span class="footer-copyright">© Eros Marucchi and Edoardo Antonini</span> -
+        <a href="https://profiletree.com/" class="footer-link">ProfileTree</a>
+        <a href="https://profiletree.com/" class="footer-link">
+            <img class="logo" src="image/profiletree_logo.png" alt="Logo ProfileTree"></a>
+        <br>
+        <div class="gtranslate_wrapper" style="display: inline-block;"></div> -
+        <a href="policy.html" class="footer-link">Privacy policy</a>
     </div>
     <!-- Import JavaScript -->
     <script src="js/flag.js"></script>
