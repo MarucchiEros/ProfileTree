@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,10 +12,10 @@
     <link rel="stylesheet" href="css/div.css">
     <link rel="stylesheet" href="css/navbar.css">
     <link rel="stylesheet" href="css/form.css">
+    <link rel="stylesheet" href="css/button.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/2.5.0/remixicon.css">
     <link rel="icon" href="image/profiletree_logo.png" type="image/png">
 </head>
-
 <body>
     <div class="background">
         <!-- Navbar -->
@@ -55,7 +54,6 @@
                 </div>
             </div>
         </nav>
-
         <div class="form-container">
             <form id="accessibility-form">
                 <div class="row mb-5">
@@ -97,13 +95,11 @@
                     <p class="important-text">At the top of the website, there is a navigation bar with various options
                         such as "Calculate," "Guide," "Why is important," "Where," and "Social."
                         Use these options to easily navigate between sections of the site.</p>
-
                     <h5 class="important-title">Conducting an Accessibility Test</h5>
                     <h6 class="important-subtitle">Entering the URL</h6>
                     <p class="important-text">Scroll down to the "Accessibility checker" section.
                         Enter the URL of the webpage you want to test in the text field.
                         Click the "Test" button to start the accessibility test.</p>
-
                     <h5 class="important-title">Viewing the Results</h5>
                     <h6 class="important-subtitle">Accessibility Statistics</h6>
                     <p class="important-text">After starting the test, the input module will disappear, and the
@@ -111,7 +107,6 @@
                         This section contains a title with the URL of the tested site and an accessibility percentage
                         represented in various colors (green, yellow, red) depending on the score obtained.
                         A pie chart representing the accessibility score will be displaye</p>
-
                     <h5 class="important-title">Interpreting the Results</h5>
                     <h6 class="important-subtitle">Passed and Failed Tests</h6>
                     <p class="important-text">The results will be divided into two categories: "Tests Passed" and "Tests
@@ -119,20 +114,17 @@
                         Each test will be listed with the status "Passed" or "Failed" next to it.
                         The tests include checks such as "Color Contrast," "Grammar," "Link Names," "HTML Structure,"
                         and other accessibility verifications.</p>
-
                     <h5 class="important-title">Website Screenshot</h5>
                     <h6 class="important-subtitle">Viewing the Screenshot</h6>
                     <p class="important-text">If available, a screenshot of the tested webpage will be displayed.
                         The screenshot provides a visual preview of the page and helps identify any visual accessibility
                         issues.</p>
-
                     <h5 class="important-title">Next Steps</h5>
                     <h6 class="important-subtitle">Resolving Accessibility Issues</h6>
                     <p class="important-text">If accessibility issues are detected, the site offers a "fix your problem"
                         button that redirects to a page where you can get assistance in resolving the issues.
                         You can also click the "calculate another site" button to start a new test on another website.
                     </p>
-
                     <h5 class="important-title">Additional Sections of the Site</h5>
                     <h6 class="important-subtitle">Why is it Important</h6>
                     <p class="important-text">Scroll down to the "Why is it important" section to understand the
@@ -140,7 +132,7 @@
                     <h6 class="important-subtitle">Where</h6>
                     <p class="important-text">The "Where" section contains information about the organization's physical
                         location with an interactive map
-                     </p>
+                    </p>
                     <h6 class="important-subtitle">Social Contacts</h6>
                     <p class="important-text">The "Social" section provides contact information and links to the
                         organization's social media profiles.
@@ -339,45 +331,34 @@
             </div>
         </div>
         <div id="accessibility-stats" class="row" style="display: none;">
-            <div class="row" id="row1"> <!-- Nome sito -->
-                <h2 id="page-title"></h2>
-            </div>
-            <div class="row">
+            <div class="col" id="center">
+                <div class="col-12" id="row1"> <!-- Nome sito -->
+                    <h2 id="page-title"></h2>
+                </div>
                 <div class="div2 col-3" id="divResult"><!-- Foto -->
                     <div id="screenshot"></div>
                 </div>
-                <div class="div2 col-3"><!-- Test pass -->
+                <div class="div2 col-3"><!-- Test -->
                     <div id="resultPass"></div>
-                </div>
-                <div class="div2 col-3"><!-- Test fail -->
                     <div id="resultErr"></div>
                 </div>
                 <div class="div2 col-3" id="divResult2"><!-- Grafico -->
                     <div id="accessibility-percentage"></div>
                     <canvas id="pie-chart" width="150" height="150"></canvas>
                 </div>
-            </div>
-            <div class="row" id="row3"> <!-- pulsanti -->
-                <div class="col-3">
-                    <button type="button" class="click btn btn-success" id="reloadButton">Calculate Another
-                        Site</button>
-                </div>
-                <div class="col-3"></div>
-                <div class="col-3"></div>
-                <div class="col-3">
-                    <button type="button" class="click btn btn-success">Fix Your Problem</button>
+                <div class="col" id="row3"> <!-- pulsanti -->
+                    <div class="col-3">f
+                        <button type="button" class="click btn btn-success" id="reloadButton">Calculate Another
+                            Site</button>
+                    </div>
+                    <div class="col-3"></div>
+                    <div class="col-3"></div>
+                    <div class="col-3">
+                        <button type="button" class="click btn btn-success">Fix Your Problem</button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="footer">
-        <span class="footer-copyright">© Eros Marucchi and Edoardo Antonini</span> -
-        <a href="https://profiletree.com/" class="footer-link">ProfileTree</a>
-        <a href="https://profiletree.com/" class="footer-link">
-            <img class="logo" src="image/profiletree_logo.png" alt="Logo ProfileTree"></a>
-        <br>
-        <div class="gtranslate_wrapper" style="display: inline-block;"></div> -
-        <a href="policy.html" class="footer-link">Privacy policy</a>
     </div>
     <!-- Import JavaScript -->
     <script src="js/flag.js"></script>
@@ -388,6 +369,14 @@
     <script src="css/bootstrap-5.0.2-dist/js/bootstrap.bundle.js"></script>
     <script src="js/script.js"></script>
     <script src="js/button.js"></script>
+    <div class="footer">
+        <span class="footer-copyright">© Eros Marucchi and Edoardo Antonini</span> -
+        <a href="https://profiletree.com/" class="footer-link">ProfileTree</a>
+        <a href="https://profiletree.com/" class="footer-link">
+            <img class="logo" src="image/profiletree_logo.png" alt="Logo ProfileTree"></a>
+        <br>
+        <div class="gtranslate_wrapper" style="display: inline-block;"></div> -
+        <a href="policy.html" class="footer-link">Privacy policy</a>
+    </div>
 </body>
-
 </html>
