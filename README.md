@@ -17,6 +17,7 @@ This repository contains all the projects and source code created by Eros Marucc
 
 For any questions or support requests, please do not hesitate to contact us:
 
+- ProfileTree: [hello@profiletree.com](mailto:hello@profiletree.com)
 - Eros Marucchi: [eros.marucchi@samtrevano.ch](mailto:eros.marucchi@samtrevano.ch)
 - Edoardo Antonini: [edoardo.antonin@samtrevano.ch](mailto:edoardo.antonin@samtrevano.ch)
 
