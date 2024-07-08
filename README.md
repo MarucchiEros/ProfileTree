@@ -24,7 +24,3 @@ For any questions or support requests, please do not hesitate to contact us:
 ## Copyright
 
 © 2024 ProfileTree. All rights reserved.
-
----
-
-Thank you for your interest in our projects!
