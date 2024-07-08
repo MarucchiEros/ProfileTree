@@ -19,7 +19,7 @@ For any questions or support requests, please do not hesitate to contact us:
 
 - ProfileTree: [hello@profiletree.com](mailto:hello@profiletree.com)
 - Eros Marucchi: [eros.marucchi@samtrevano.ch](mailto:eros.marucchi@samtrevano.ch)
-- Edoardo Antonini: [edoardo.antonin@samtrevano.ch](mailto:edoardo.antonin@samtrevano.ch)
+- Edoardo Antonini: [edoardo.antonini@samtrevano.ch](mailto:edoardo.antonini@samtrevano.ch)
 
 ## Copyright
 
