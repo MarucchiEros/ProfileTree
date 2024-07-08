@@ -1,4 +1,4 @@
-# Projects by Eros Marucchi and Edoardo Antonini for ProfileTree
+# ProfileTree
 
 Welcome to the official repository of projects by Eros Marucchi and Edoardo Antonini developed for ProfileTree.
 
