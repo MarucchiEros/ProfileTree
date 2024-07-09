@@ -43,14 +43,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Mostra la percentuale di accessibilità con il grafico a torta
             const accessibilityPercentage = document.getElementById('accessibility-percentage');
-            if (accessibilityScore >= 90){
-                accessibilityPercentage.innerHTML = `<p style="color: #4CAF50; font-size:200%;">Accessibility Score: ${accessibilityScore}%</p>`;
-            }else if (accessibilityScore >= 70){
-                accessibilityPercentage.innerHTML = `<p style="color: #FFC107; font-size:200%;">Accessibility Score: ${accessibilityScore}%</p>`
-            }else{
-                accessibilityPercentage.innerHTML = `<p style="color: #F44336; font-size:200%;">Accessibility Score: ${accessibilityScore}%</p>`
-            }            
+            if (accessibilityScore >= 90) {
+                accessibilityPercentage.innerHTML = `<p style="color: #4CAF50; font-size: 150%; margin-bottom: 5px;">Accessibility Score: ${accessibilityScore}%</p>`;
+            } else if (accessibilityScore >= 70) {
+                accessibilityPercentage.innerHTML = `<p style="color: #FFC107; font-size: 150%; margin-bottom: 5px;">Accessibility Score: ${accessibilityScore}%</p>`;
+            } else {
+                accessibilityPercentage.innerHTML = `<p style="color: #F44336; font-size: 150%; margin-bottom: 5px;">Accessibility Score: ${accessibilityScore}%</p>`;
+            }
             drawPieChart(accessibilityScore);
+
 
             let resultPass = `<div id="accessibility-report">`;
             let resultErr = `<div id="accessibility-report">`;
@@ -115,9 +116,9 @@ document.addEventListener('DOMContentLoaded', () => {
             if (failedTests.length > 0) {
                 resultErr += `<br><div id="failed-tests"><h3>Tests Failed</h3><table class="results-table">`;
                 failedTests.forEach(test => {
-                    resultErr+= `<tr><td>${test}</td><td style="color: #871919">Failed</td></tr>`;
+                    resultErr += `<tr><td>${test}</td><td style="color: #871919">Failed</td></tr>`;
                 });
-                resultErr+= `</table></div>`;
+                resultErr += `</table></div>`;
                 resultErr += `</div>`;
             }
 
@@ -145,29 +146,30 @@ document.addEventListener('DOMContentLoaded', () => {
     function drawPieChart(percent) {
         const canvas = document.getElementById('pie-chart');
         if (!canvas) return;
-
+    
         const ctx = canvas.getContext('2d');
         const x = canvas.width / 2;
         const y = canvas.height / 2;
-        const radius = canvas.width / 3;
+        const radius = Math.min(canvas.width, canvas.height) / 2.1;
         const startAngle = -0.5 * Math.PI;
         const endAngle = (percent / 100) * 2 * Math.PI;
-
+    
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-
+    
         ctx.beginPath();
         ctx.moveTo(x, y);
         ctx.arc(x, y, radius, startAngle, startAngle + endAngle);
         ctx.closePath();
         ctx.fillStyle = getColorForPercent(percent);
         ctx.fill();
-
+    
         ctx.beginPath();
         ctx.arc(x, y, radius, 0, 2 * Math.PI);
         ctx.strokeStyle = 'rgb(0,0,0)';
         ctx.lineWidth = 2;
         ctx.stroke();
     }
+    
 
     function getColorForPercent(percent) {
         if (percent >= 90) return '#4CAF50';
@@ -178,6 +180,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-function closeNavbar(){
+function closeNavbar() {
     document.getElementById("navbar1").style.display = "none";
 }

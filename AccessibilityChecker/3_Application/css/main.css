@@ -8,19 +8,11 @@ body, html {
     height: 100%;
 }
 
-
-
 .background {
-    
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-
 }
-
-
-
-
 
 .form-container {
     margin-bottom: 1%;
@@ -130,37 +122,30 @@ h2 {
     color: #198754;
 }
 
-
-
 h3 {
     color: white;
 }
 
-.click {
-    border-radius: 10px;
-    width: 100%; 
-    box-sizing: border-box; 
-    padding: 10px; 
-    margin-bottom: 10px; 
-}
 #accessibility-stats {
     display: flex;
-    /* flex-wrap: wrap; */
-    flex-grow: 0;
+    flex-direction: column;
+    align-items: center; /* Allinea gli elementi al centro orizzontalmente */
+    text-align: center;
+    width: 100%;
 }
-#accessibility-stats > div {
+
+#row1, #buttons {
     display: flex;
-    flex-direction: column; /* Dispone gli elementi in colonna */
-    justify-content: center; /* Allinea verticalmente al centro */
-    align-items: center; /* Allinea orizzontalmente al centro */
-    text-align: center; /* Centra il testo all'interno degli elementi */
-    height: 100vh; /* Altezza del contenitore per centrare verticalmente */
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 20px; /* Spazio tra le righe */
 }
 
-
-.container {
-    min-height: 100%; /* Assicura che il contenuto riempia almeno l'altezza della finestra */
-    padding-bottom: 50px; /* Altezza del footer per evitare sovrapposizioni */
-    box-sizing: border-box; /* Include il padding nel calcolo dell'altezza */
+#divResult, #divResult2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 45%;
+    margin: 0 2.5%; /* Margine per bilanciare gli elementi */
 }
-

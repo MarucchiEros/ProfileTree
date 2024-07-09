@@ -4,13 +4,21 @@
     padding: 1%; 
     text-align: center;
     font-size: large;
-    position: absolute; 
-    bottom: 1; 
-    width: 100%; 
+    position: relative; /* Cambiato da absolute per evitare sovrapposizioni */
+    width: 100%;
     margin-bottom: 0;
 }
 
 .footer a {
     color: #28a745;
     text-decoration: none;
+}
+
+.footer .footer-link {
+    margin: 0 10px; /* Aggiunto margine per spaziatura tra i link */
+}
+
+.footer img.logo {
+    vertical-align: middle; /* Allinea l'immagine verticalmente */
+    margin-left: 5px; /* Spaziatura tra testo e immagine */
 }
