@@ -31,10 +31,10 @@ input[type="text"] {
     padding: 10px;
     font-size: 16px;
     border: solid 1px #198754;
-    border-top-left-radius: 10px; /* Arrotonda l'angolo in alto a destra */
-    border-bottom-left-radius: 10px; /* Arrotonda l'angolo in basso a destra */
-    border-top-right-radius: 0; /* Mantiene l'angolo in alto a sinistra rettangolare */
-    border-bottom-right-radius: 0; /* Mantiene l'angolo in basso a sinistra rettangolare */
+    border-top-left-radius: 10px; /* Round the top right corner */
+    border-bottom-left-radius: 10px; /* Round the bottom-right corner */
+    border-top-right-radius: 0; /* Keeps the top left corner rectangular */
+    border-bottom-right-radius: 0; /* Keeps the bottom left corner rectangular */
 }
 
 input::placeholder {
@@ -101,7 +101,7 @@ h1 {
     
 }
 h1:hover{
-    -webkit-text-stroke: 3px rgba(0, 255, 136, 0.7); /* Per i browser basati su WebKit */
+    -webkit-text-stroke: 3px rgba(0, 255, 136, 0.7); /* for the browser based on WebKit */
     color: rgb(1, 7, 54);
 }
 
@@ -137,6 +137,7 @@ h3 {
     align-items: center; /* Allinea gli elementi al centro orizzontalmente */
     text-align: center;
     width: 100%;
+
 }
 
 #row1, #buttons {

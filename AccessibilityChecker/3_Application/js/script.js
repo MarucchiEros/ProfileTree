@@ -10,10 +10,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('accessibility-form');
 
     form.addEventListener('submit', async (event) => {
-        event.preventDefault(); // Prevents default form submit behavior
+        event.preventDefault(); // Evita il comportamento di default del submit del form
 
         const urlInput = document.getElementById('url-input');
-        const url = urlInput.value.trim(); // Get the entered URL and trim whitespace
+        const url = urlInput.value.trim(); // Ottieni l'URL inserito e rimuovi eventuali spazi bianchi
 
         if (!url) {
             alert('Please enter a URL');
@@ -35,14 +35,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const data = await response.json();
 
-            // Hide the input form
+            // Nascondi il form di input
             document.querySelector('.form-container').style.display = 'none';
 
-            // Show the accessibility stats section
+            // Mostra la sezione di statistiche sull'accessibilità
             const accessibilityStats = document.getElementById('accessibility-stats');
-            accessibilityStats.style.display = 'flex';
+            accessibilityStats.style.display = 'flex'; // Usa flex invece di block
 
-            // Show the page title in the report header
+            // Mostra il titolo della pagina nell'header del report
             const pageTitleElement = document.getElementById('page-title');
             pageTitleElement.innerHTML = `Accessibility Report for <b>${url}</b>`;
 
@@ -51,40 +51,162 @@ document.addEventListener('DOMContentLoaded', () => {
             const passedTests = [];
             const failedTests = [];
 
-            const tests = {
-                colorContrast: 'Color Contrast',
-                linkNames: 'Link Names',
-                htmlStructure: 'HTML Structure',
-                roleValues: 'Role Values',
-                ariaHidden: 'Aria Hidden',
-                hasTitle: 'Document Title',
-                sequentialHeadings: 'Sequential Headings',
-                formLabels: 'Form Labels',
-                userScalable: 'User Scalable',
-                altTextImages: 'Alt Text For Image',
-                tabIndexOrder: 'Tab Index Order',
-                ariaRoles: 'ARIA Role',
-                descriptiveHeadings: 'Descriptive Headings',
-                landmarkRegions: 'Landmark Regions',
-                formValidation: 'Form Validation',
-                dynamicContentUpdates: 'Dynamic Content Updates'
-            };
 
-            for (const [key, label] of Object.entries(tests)) {
-                if (data[key] === 'Passed') {
-                    passedTests.push(`<td onmouseover="openInfo('${key}')" onmouseleave="closeInfo('${key}')">${label}
-                        <p class="info" style="display: none" id="${key}">
-                            Description of ${label}.
-                        </p></td>`);
-                } else {
-                    failedTests.push(`<td onmouseover="openInfo('${key}')" onmouseleave="closeInfo('${key}')">${label}
-                        <p class="info" style="display: none" id="${key}">
-                            Description of ${label}.
-                        </p></td>`);
-                }
-            }
 
-            // Build the passed tests table
+
+            // Raccogli i risultati dei test                           
+            if (data.colorContrast === 'Passed') passedTests.push(`<td onmouseover="openInfo('color')" onmouseleave="closeInfo('color')">Color Contrast 
+                <p class="info" style="display: none" id="color">
+                    Check whether the contrast between the text and the background is sufficient to be readable by people with visual impairments, such as colour blindness or reduced vision. Good contrast helps all users read text more easily.                </p></td>`);
+            else failedTests.push(`<td onmouseover="openInfo('color')" onmouseleave="closeInfo('color')">Color Contrast 
+                <p class="info" style="display: none" id="color">
+                    Check whether the contrast between the text and the background is sufficient to be readable by people with visual impairments, such as colour blindness or reduced vision. Good contrast helps all users read text more easily.                </p></td>`);
+            if (data.grammar === 'Passed') passedTests.push(`<td onmouseover="openInfo('grammar')" onmouseleave="closeInfo('grammar')">Grammar 
+                <p class="info" style="display: none" id="grammar">
+                    Checks if the website content is grammatically correct. Well-written and error-free text is easier to understand for all users.
+                </p></td>`);
+            else failedTests.push(`<td onmouseover="openInfo('grammar')" onmouseleave="closeInfo('grammar')">Grammar 
+                <p class="info" style="display: none" id="grammar">
+                    Checks if the website content is grammatically correct. Well-written and error-free text is easier to understand for all users.
+                </p></td>`);
+            if (data.linkNames === 'Passed') passedTests.push(`<td onmouseover="openInfo('link')" onmouseleave="closeInfo('link')">Link Names 
+                <p class="info" style="display: none" id="link">
+                    Ensures that links have descriptive names that clearly indicate their destination or action. Links like "click here" are not very useful; it is better to use descriptions like "read our article on accessibility standards".
+                </p></td>`);
+            else failedTests.push(`<td onmouseover="openInfo('link')" onmouseleave="closeInfo('link')">Link Names 
+                <p class="info" style="display: none" id="link">
+                    Ensures that links have descriptive names that clearly indicate their destination or action. Links like "click here" are not very useful; it is better to use descriptions like "read our article on accessibility standards".
+                </p></td>`);
+            if (data.htmlStructure === 'Passed') passedTests.push(`<td onmouseover="openInfo('structure')" onmouseleave="closeInfo('structure')"> HTML Structure 
+                <p class="info" style="display: none" id="structure">
+                    An accessible HTML structure uses logical heading tags, ARIA roles, and descriptive attributes to make the site navigable for everyone, including users with disabilities. Ensure that links and buttons have clear text, forms have correct labels, and keyboard navigation is smooth. Use high-contrast colors and readable text to enhance usability.
+                </p></td>`);
+            else failedTests.push(`<td onmouseover="openInfo('structure')" onmouseleave="closeInfo('structure')"> HTML Structure 
+                <p class="info" style="display: none" id="structure">
+                    An accessible HTML structure uses logical heading tags, ARIA roles, and descriptive attributes to make the site navigable for everyone, including users with disabilities. Ensure that links and buttons have clear text, forms have correct labels, and keyboard navigation is smooth. Use high-contrast colors and readable text to enhance usability.
+                </p></td>`);
+            if (data.roleValues === 'Passed') passedTests.push(`<td onmouseover="openInfo('role')" onmouseleave="closeInfo('role')"> Role Values 
+                <p class="info" style="display: none" id="role">
+                    Ensures that the page elements have correct ARIA roles. These attributes help assistive tools better understand the structure and functionality of the page elements.
+                </p></td>`);
+            else failedTests.push(`<td onmouseover="openInfo('role')" onmouseleave="closeInfo('role')"> Role Values
+                <p class="info" style="display: none" id="role">
+                    Ensures that the page elements have correct ARIA roles. These attributes help assistive tools better understand the structure and functionality of the page elements.iao
+                </p></td>`);
+            if (data.ariaHidden === 'Passed') passedTests.push(`<td onmouseover="openInfo('aria')" onmouseleave="closeInfo('aria')"> Aria Hidden
+                <p class="info" style="display: none" id="aria">
+                    Checks if elements that should not be read by screen readers have the aria-hidden="true" attribute. This is useful for hiding decorative or non-relevant content from screen reader users.
+                </p></td>`);
+            else failedTests.push(`<td onmouseover="openInfo('aria')" onmouseleave="closeInfo('aria')"> Aria Hidden
+                <p class="info" style="display: none" id="aria">
+                    Checks if elements that should not be read by screen readers have the aria-hidden="true" attribute. This is useful for hiding decorative or non-relevant content from screen reader users.
+                </p></td>`);
+            if (data.accessibleButtons === 'Passed') passedTests.push(`<td onmouseover="openInfo('buttons')" onmouseleave="closeInfo('buttons')"> Accessible Buttons
+                <p class="info" style="display: none" id="buttons">
+                    Checks if buttons are accessible via keyboard and if they have descriptive labels. Buttons must be usable by everyone, including those who cannot use a mouse.
+                </p></td>`);
+            else failedTests.push(`<td onmouseover="openInfo('buttons')" onmouseleave="closeInfo('buttons')"> Accesible Buttons
+                <p class="info" style="display: none" id="buttons">
+                    Checks if buttons are accessible via keyboard and if they have descriptive labels. Buttons must be usable by everyone, including those who cannot use a mouse.
+                </p></td>`);
+            if (data.hasTitle === 'Passed') passedTests.push(`<td onmouseover="openInfo('title')" onmouseleave="closeInfo('title')"> Document Title
+                <p class="info" style="display: none" id="title">
+                    Checks if the page has a meaningful and descriptive title. The document title appears in the browser tab and helps users quickly understand the content of the page. It is also important for search engines and users who use assistive tools.
+                </p></td>`);
+            else failedTests.push(`<td onmouseover="openInfo('title')" onmouseleave="closeInfo('title')"> Document title
+                <p class="info" style="display: none" id="title">
+                    Checks if the page has a meaningful and descriptive title. The document title appears in the browser tab and helps users quickly understand the content of the page. It is also important for search engines and users who use assistive tools.
+                </p></td>`);
+            if (data.sequentialHeadings === 'Passed') passedTests.push(`<td onmouseover="openInfo('sequential')" onmouseleave="closeInfo('sequential')"> Sequential Headings
+                <p class="info" style="display: none" id="sequential">
+                    Ensures that page headings follow a logical sequential order. This helps users better understand the page structure.
+                </p></td>`);
+            else failedTests.push(`<td onmouseover="openInfo('sequential')" onmouseleave="closeInfo('sequential')"> Sequential Headings
+                <p class="info" style="display: none" id="sequential">
+                    Ensures that page headings follow a logical sequential order. This helps users better understand the page structure.
+                </p></td>`);
+            if (data.formLabels === 'Passed') passedTests.push(`<td onmouseover="openInfo('label')" onmouseleave="closeInfo('label')"> Form Labels
+                <p class="info" style="display: none" id="label">
+                    Verifies if all form fields have descriptive labels that clearly explain what needs to be entered. Labels help users, especially those using assistive tools, understand the content and function of the fields.
+                </p></td>`);
+            else failedTests.push(`<td onmouseover="openInfo('label')" onmouseleave="closeInfo('label')"> Form Labels
+                <p class="info" style="display: none" id="label">
+                    Verifies if all form fields have descriptive labels that clearly explain what needs to be entered. Labels help users, especially those using assistive tools, understand the content and function of the fields.
+                </p></td>`);
+            if (data.userScalable === 'Passed') passedTests.push(`<td onmouseover="openInfo('user')" onmouseleave="closeInfo('user')"> User Scalable
+                <p class="info" style="display: none" id="user">
+                    Verifies if users can zoom and resize the page text. Users with visual impairments need to be able to enlarge the text to read it comfortably.
+                </p></td>`);
+            else failedTests.push(`<td onmouseover="openInfo('user')" onmouseleave="closeInfo('user')"> User Scalable
+                <p class="info" style="display: none" id="user">
+                    Verifies if users can zoom and resize the page text. Users with visual impairments need to be able to enlarge the text to read it comfortably.
+                </p></td>`);
+            if (data.altTextImages === 'Passed') passedTests.push(`<td onmouseover="openInfo('text')" onmouseleave="closeInfo('text')"> Alt Text For Image
+                <p class="info" style="display: none" id="text">
+                    Checks if all images have alternative text (alt). The alt text describes the image for users who cannot see it, including those using screen readers.
+                </p></td>`);
+            else failedTests.push(`<td onmouseover="openInfo('text')" onmouseleave="closeInfo('text')"> Alt Text For Image
+                <p class="info" style="display: none" id="text">
+                    Checks if all images have alternative text (alt). The alt text describes the image for users who cannot see it, including those using screen readers.
+                </p></td>`);
+            if (data.tabIndexOrder === 'Passed') passedTests.push(`<td onmouseover="openInfo('index')" onmouseleave="closeInfo('index')"> Tab Index Order
+                <p class="info" style="display: none" id="index">
+                    Ensures that the tab order is logical and follows the visual sequence of the page. Users must be able to easily navigate through content using the keyboard.
+                </p></td>`);
+            else failedTests.push(`<td onmouseover="openInfo('index')" onmouseleave="closeInfo('index')"> Tab Index Order
+                <p class="info" style="display: none" id="index">
+                    Ensures that the tab order is logical and follows the visual sequence of the page. Users must be able to easily navigate through content using the keyboard.
+                </p></td>`);
+            if (data.ariaRoles === 'Passed') passedTests.push(`<td onmouseover="openInfo('Arole')" onmouseleave="closeInfo('Arole')"> ARIA Role
+                <p class="info" style="display: none" id="Arole">
+                    Similar to role values, this check ensures that elements have appropriate ARIA roles to describe their function, such as button, navigation, main, etc.
+                </p></td>`);
+            else failedTests.push(`<td onmouseover="openInfo('Arole')" onmouseleave="closeInfo('Arole')"> ARIA Role
+                <p class="info" style="display: none" id="Arole">
+                    Similar to role values, this check ensures that elements have appropriate ARIA roles to describe their function, such as button, navigation, main, etc.
+                </p></td>`);
+            if (data.descriptiveHeadings === 'Passed') passedTests.push(`<td onmouseover="openInfo('descriptive')" onmouseleave="closeInfo('descriptive')"> Descriptive Headings
+                <p class="info" style="display: none" id="descriptive">
+                    Ensures that the page headings are descriptive and hierarchically organized. Descriptive headings help users navigate and understand the page structure.
+                </p></td>`);
+            else failedTests.push(`<td onmouseover="openInfo('descriptive')" onmouseleave="closeInfo('descriptive')"> Descriptive Headings
+                <p class="info" style="display: none" id="descriptive">
+                    Ensures that the page headings are descriptive and hierarchically organized. Descriptive headings help users navigate and understand the page structure.
+                </p></td>`);
+            if (data.landmarkRegions === 'Passed') passedTests.push(`<td onmouseover="openInfo('landmark')" onmouseleave="closeInfo('landmark')"> Landmark Regions
+                <p class="info" style="display: none" id="landmark">
+                    Checks if the page correctly uses landmark regions (such as nav, main, footer) to clearly define different parts of the page. This helps assistive tools provide more efficient navigation.
+                </p></td>`);
+            else failedTests.push(`<td onmouseover="openInfo('landmark')" onmouseleave="closeInfo('landmark')"> Landmark Regions
+                <p class="info" style="display: none" id="landmark">
+                    Checks if the page correctly uses landmark regions (such as nav, main, footer) to clearly define different parts of the page. This helps assistive tools provide more efficient navigation.
+                </p></td>`);
+            if (data.formValidation === 'Passed') passedTests.push(`<td onmouseover="openInfo('from')" onmouseleave="closeInfo('from')"> Form Validation
+                <p class="info" style="display: none" id="from">
+                    Checks if forms have proper validation mechanisms and if errors are clearly communicated to users. Users need to know when they have made an error and how to correct it.
+                </p></td>`);
+            else failedTests.push(`<td onmouseover="openInfo('from')" onmouseleave="closeInfo('from')"> Form Validation
+                <p class="info" style="display: none" id="from">
+                    Checks if forms have proper validation mechanisms and if errors are clearly communicated to users. Users need to know when they have made an error and how to correct it.
+                </p></td>`);
+            if (data.focusableElements === 'Passed') passedTests.push(`<td onmouseover="openInfo('focusable')" onmouseleave="closeInfo('focusable')"> Focusable Elements
+                <p class="info" style="display: none" id="focusable">
+                    Verifies if all interactive elements (like links, buttons, form fields) can be focused and used via keyboard. Users who cannot use a mouse must be able to access all interactive elements.
+                </p></td>`);
+            else failedTests.push(`<td onmouseover="openInfo('focusable')" onmouseleave="closeInfo('focusable')"> Focusable Elements
+                <p class="info" style="display: none" id="focusable">
+                    Verifies if all interactive elements (like links, buttons, form fields) can be focused and used via keyboard. Users who cannot use a mouse must be able to access all interactive elements.
+                </p></td>`);
+            if (data.dynamicContentUpdates === 'Passed') passedTests.push(`<td onmouseover="openInfo('dynamic')" onmouseleave="closeInfo('dynamic')"> Dynamic Content Updates
+                <p class="info" style="display: none" id="dynamic">
+                    Verifies if dynamic content updates are properly communicated to users, especially those using screen readers. Dynamic updates should not surprise or confuse users.
+                </p></td>`);
+            else failedTests.push(`<td onmouseover="openInfo('dynamic')" onmouseleave="closeInfo('dynamic')"> Dynamic Content Updates
+                <p class="info" style="display: none" id="dynamic">
+                    Verifies if dynamic content updates are properly communicated to users, especially those using screen readers. Dynamic updates should not surprise or confuse users.
+                </p></td>`);
+
+            // Costruisci la tabella dei test passati
             if (passedTests.length > 0) {
                 resultPass += `<br><div id="passed-tests"><table class="results-table">`;
                 passedTests.forEach(test => {
@@ -93,7 +215,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 resultPass += `</table></div>`;
             }
 
-            // Build the failed tests table
+            // Costruisci la tabella dei test non passati
             if (failedTests.length > 0) {
                 resultErr += `<br><div id="failed-tests"><table class="results-table">`;
                 failedTests.forEach(test => {
@@ -102,11 +224,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 resultErr += `</table></div>`;
             }
 
-            // Calculate accessibility percentage
+            // Calcolo percentuale di accessibilità
             const totalTests = passedTests.length + failedTests.length;
             const accessibilityScore = (totalTests > 0) ? ((passedTests.length / totalTests) * 100).toFixed(1) : 0;
 
-            // Show the accessibility percentage with pie chart
+            // Mostra la percentuale di accessibilità con il grafico a torta
             const accessibilityPercentage = document.getElementById('accessibility-percentage');
             if (accessibilityScore >= 90) {
                 accessibilityPercentage.innerHTML = `<p style="color: #4CAF50; font-size: 150%; margin-bottom: 5px;">Accessibility Score: ${accessibilityScore}%</p>`;
@@ -153,7 +275,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-        // Draw the gray background for the pie chart
+        // Disegna lo sfondo grigio per il grafico a torta
         ctx.beginPath();
         ctx.moveTo(x, y);
         ctx.arc(x, y, radius, 0, 2 * Math.PI);  
@@ -161,7 +283,7 @@ document.addEventListener('DOMContentLoaded', () => {
         ctx.fillStyle = '#e0e0e0';
         ctx.fill();
 
-        // Draw the portion of the pie chart corresponding to the score
+        // Disegna la parte del grafico a torta corrispondente al punteggio
         ctx.beginPath();
         ctx.moveTo(x, y);
         ctx.arc(x, y, radius, startAngle, startAngle + endAngle);
@@ -169,7 +291,7 @@ document.addEventListener('DOMContentLoaded', () => {
         ctx.fillStyle = getColorForPercent(percent);
         ctx.fill();
 
-        // Draw the border of the pie chart
+        // Disegna il bordo del grafico a torta
         ctx.beginPath();
         ctx.arc(x, y, radius, 0, 2 * Math.PI);
         ctx.strokeStyle = 'rgb(0,0,0)';

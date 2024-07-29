@@ -43,6 +43,11 @@ app.post('/check-accessibility', async (req, res) => {
             return elements.every(el => el.hasAttribute('aria-hidden')) ? 'Passed' : 'Failed';
         });
 
+        const accessibleButtons = await page.evaluate(() => {
+            const buttons = Array.from(document.querySelectorAll('button'));
+            return buttons.every(button => button.getAttribute('aria-label') || button.textContent.trim() !== '') ? 'Passed' : 'Failed';
+        });
+
         const hasTitle = await page.evaluate(() => {
             return document.title.trim() !== '' ? 'Passed' : 'Failed';
         });
@@ -88,7 +93,7 @@ app.post('/check-accessibility', async (req, res) => {
         const tabIndexOrder = await page.evaluate(() => {
             const tabbableElements = Array.from(document.querySelectorAll('[tabindex]'));
             let isSequential = true;
-            let previousTabIndex = -1;
+            let previousTabIndex = 0;
             tabbableElements.forEach(element => {
                 const currentTabIndex = parseInt(element.getAttribute('tabindex'));
                 if (currentTabIndex < previousTabIndex) {
@@ -111,7 +116,7 @@ app.post('/check-accessibility', async (req, res) => {
 
         const landmarkRegions = await page.evaluate(() => {
             const regions = ['main', 'nav', 'header', 'footer', 'aside', 'section', 'article'];
-            return regions.some(region => document.querySelector(region)) ? 'Passed' : 'Failed';
+            return regions.every(region => document.querySelector(region)) ? 'Passed' : 'Failed';
         });
 
         const formValidation = await page.evaluate(() => {
@@ -120,6 +125,11 @@ app.post('/check-accessibility', async (req, res) => {
                 const inputs = Array.from(form.querySelectorAll('input, select, textarea'));
                 return inputs.every(input => input.checkValidity());
             }) ? 'Passed' : 'Failed';
+        });
+
+        const focusableElements = await page.evaluate(() => {
+            const focusableElements = Array.from(document.querySelectorAll('a, button, input, select, textarea, [tabindex]'));
+            return focusableElements.every(element => element.tabIndex >= 0) ? 'Passed' : 'Failed';
         });
 
         const dynamicContentUpdates = await page.evaluate(() => {
@@ -131,18 +141,20 @@ app.post('/check-accessibility', async (req, res) => {
 
         // Analyze the accessibility report
         const colorContrast = accessibilityReport.violations.find(violation => violation.id === 'color-contrast') ? 'Failed' : 'Passed';
+        const grammar = 'Not Checked';  // Puppeteer alone cannot check grammar.
         const linkNames = accessibilityReport.violations.find(violation => violation.id === 'link-name') ? 'Failed' : 'Passed';
         const htmlStructure = accessibilityReport.violations.find(violation => violation.id === 'html-has-lang') ? 'Failed' : 'Passed';
         const roleValues = accessibilityReport.violations.find(violation => violation.id === 'aria-valid-attr-value') ? 'Failed' : 'Passed';
 
         // Calculate accessibility score
-        const totalTests = 18; // Adjust based on number of tests
+        const totalTests = 21; // Adjust based on number of tests
         const passedTests = Object.values({
             colorContrast,
             linkNames,
             htmlStructure,
             roleValues,
             ariaHidden,
+            accessibleButtons,
             hasTitle,
             sequentialHeadings,
             formLabels,
@@ -153,6 +165,7 @@ app.post('/check-accessibility', async (req, res) => {
             descriptiveHeadings,
             landmarkRegions,
             formValidation,
+            focusableElements,
             dynamicContentUpdates
         }).filter(result => result === 'Passed').length;
 
@@ -160,10 +173,12 @@ app.post('/check-accessibility', async (req, res) => {
 
         res.send({
             colorContrast,
+            grammar,
             linkNames,
             htmlStructure,
             roleValues,
             ariaHidden,
+            accessibleButtons,
             hasTitle,
             sequentialHeadings,
             formLabels,
@@ -174,6 +189,7 @@ app.post('/check-accessibility', async (req, res) => {
             descriptiveHeadings,
             landmarkRegions,
             formValidation,
+            focusableElements,
             dynamicContentUpdates,
             accessibilityScore,
             screenshot
